@@ -1,9 +1,9 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/widgets/app_text_field.dart';
-import 'package:bekya/core/widgets/drop_down.dart';
-import 'package:bekya/core/widgets/main_category_item.dart';
-import 'package:bekya/features/cities/manager/cities_cubit.dart';
-import 'package:bekya/features/sell_Product/manager/sell_product__cubit.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/widgets/app_text_field.dart';
+import 'package:momayaz/core/widgets/drop_down.dart';
+import 'package:momayaz/core/widgets/main_category_item.dart';
+import 'package:momayaz/features/cities/manager/cities_cubit.dart';
+import 'package:momayaz/features/sell_Product/manager/sell_product__cubit.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

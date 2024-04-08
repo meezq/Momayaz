@@ -1,7 +1,7 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/widgets/app_button.dart';
-import 'package:bekya/features/main/view/screens/main_screen.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/widgets/app_button.dart';
+import 'package:momayaz/features/main/view/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

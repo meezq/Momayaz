@@ -1,9 +1,9 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/widgets/main_category_item.dart';
-import 'package:bekya/features/categories/view/screens/categories_screen.dart';
-import 'package:bekya/features/category_products/view/screens/category_products.dart';
-import 'package:bekya/features/home/manager/home_cubit.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/widgets/main_category_item.dart';
+import 'package:momayaz/features/categories/view/screens/categories_screen.dart';
+import 'package:momayaz/features/category_products/view/screens/category_products.dart';
+import 'package:momayaz/features/home/manager/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

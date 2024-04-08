@@ -1,8 +1,8 @@
-import 'package:bekya/features/home/manager/home_cubit.dart';
-import 'package:bekya/features/home/view/widgets/home_app_bar.dart';
-import 'package:bekya/features/home/view/widgets/home_categories_wdget.dart';
-import 'package:bekya/features/home/view/widgets/home_slider.dart';
-import 'package:bekya/features/home/view/widgets/products_item.dart';
+import 'package:momayaz/features/home/manager/home_cubit.dart';
+import 'package:momayaz/features/home/view/widgets/home_app_bar.dart';
+import 'package:momayaz/features/home/view/widgets/home_categories_wdget.dart';
+import 'package:momayaz/features/home/view/widgets/home_slider.dart';
+import 'package:momayaz/features/home/view/widgets/products_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

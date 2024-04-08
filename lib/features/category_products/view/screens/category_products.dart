@@ -1,7 +1,7 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/widgets/main_product_item.dart';
-import 'package:bekya/features/category_products/manager/categories_product_cubit.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/widgets/main_product_item.dart';
+import 'package:momayaz/features/category_products/manager/categories_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

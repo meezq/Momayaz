@@ -1,6 +1,6 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/widgets/app_text_field.dart';
-import 'package:bekya/features/sell_Product/manager/sell_product__cubit.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/widgets/app_text_field.dart';
+import 'package:momayaz/features/sell_Product/manager/sell_product__cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

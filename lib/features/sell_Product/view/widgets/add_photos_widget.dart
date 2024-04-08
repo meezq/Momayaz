@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/utils/safe_print.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

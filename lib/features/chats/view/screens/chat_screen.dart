@@ -1,7 +1,7 @@
-import 'package:bekya/core/shared/my_shared.dart';
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/features/chats/manager/chats_cubit.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/features/chats/manager/chats_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

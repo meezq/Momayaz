@@ -1,13 +1,13 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/utils/safe_print.dart';
-import 'package:bekya/core/utils/snack_bar.dart';
-import 'package:bekya/core/widgets/app_button.dart';
-import 'package:bekya/core/widgets/app_text_field.dart';
-import 'package:bekya/features/login/manager/login_cubit.dart';
-import 'package:bekya/features/login/model/login_model.dart';
-import 'package:bekya/features/main/view/screens/main_screen.dart';
-import 'package:bekya/features/register/view/screens/register_screen.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
+import 'package:momayaz/core/utils/snack_bar.dart';
+import 'package:momayaz/core/widgets/app_button.dart';
+import 'package:momayaz/core/widgets/app_text_field.dart';
+import 'package:momayaz/features/login/manager/login_cubit.dart';
+import 'package:momayaz/features/login/model/login_model.dart';
+import 'package:momayaz/features/main/view/screens/main_screen.dart';
+import 'package:momayaz/features/register/view/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
 
-                              Text("BEKYA",
+                              Text("momayaz",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.offWhite,

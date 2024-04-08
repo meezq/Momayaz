@@ -1,10 +1,10 @@
-import 'package:bekya/core/shared/my_shared.dart';
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/utils/safe_print.dart';
-import 'package:bekya/features/main/manager/main_cubit.dart';
-import 'package:bekya/features/sell_Product/view/screens/sell_product_screen.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
+import 'package:momayaz/features/main/manager/main_cubit.dart';
+import 'package:momayaz/features/sell_Product/view/screens/sell_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

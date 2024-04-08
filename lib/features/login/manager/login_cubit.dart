@@ -1,7 +1,7 @@
-import 'package:bekya/core/shared/my_shared.dart';
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/core/utils/safe_print.dart';
-import 'package:bekya/features/login/model/login_model.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
+import 'package:momayaz/features/login/model/login_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

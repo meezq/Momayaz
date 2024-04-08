@@ -1,7 +1,7 @@
-import 'package:bekya/core/shared/my_shared.dart';
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/features/chats/models/chats.dart';
-import 'package:bekya/features/chats/models/message.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/features/chats/models/chats.dart';
+import 'package:momayaz/features/chats/models/message.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';

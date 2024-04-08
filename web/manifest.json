@@ -1,11 +1,11 @@
 {
-    "name": "bekya",
-    "short_name": "bekya",
+    "name": "momayaz",
+    "short_name": "momayaz",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Bekya",
+    "description": "momayaz",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,4 +1,4 @@
-import 'package:bekya/core/widgets/app_image.dart';
+import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

@@ -8,8 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:bekya/main.dart';
-import 'package:bekya/app.dart';
+import 'package:momayaz/main.dart';
+import 'package:momayaz/app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

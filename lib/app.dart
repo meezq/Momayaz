@@ -1,10 +1,10 @@
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/features/login/view/screens/login_screen.dart';
-import 'package:bekya/features/main/view/screens/main_screen.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/features/login/view/screens/login_screen.dart';
+import 'package:momayaz/features/main/view/screens/main_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:flutter/material.dart';
-import 'package:bekya/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
 
 
 class MyApp extends StatelessWidget {

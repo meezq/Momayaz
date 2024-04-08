@@ -1,8 +1,8 @@
-import 'package:bekya/core/shared/my_shared.dart';
-import 'package:bekya/core/shared/my_shared_keys.dart';
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/features/cities/view/screens/cities_screen.dart';
+import 'package:momayaz/core/shared/my_shared.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/features/cities/view/screens/cities_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -18,7 +18,7 @@ class HomeAppBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'BEKYA',
+              'momayaz',
               style: TextStyle(
                 color: AppColors.offWhite,
                 fontSize: 20.sp,
@@ -82,7 +82,7 @@ class HomeAppBar extends StatelessWidget {
                 width: 3.w,
               ),
               const Text(
-                "Search For Bekya",
+                "Search For momayaz",
                 style: TextStyle(
                   color: AppColors.offWhite,
                   fontWeight: FontWeight.bold,

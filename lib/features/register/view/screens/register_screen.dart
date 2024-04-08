@@ -1,12 +1,12 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/utils/navigators.dart';
-import 'package:bekya/core/utils/snack_bar.dart';
-import 'package:bekya/core/widgets/app_button.dart';
-import 'package:bekya/core/widgets/app_text_field.dart';
-import 'package:bekya/features/login/view/screens/login_screen.dart';
-import 'package:bekya/features/main/view/screens/main_screen.dart';
-import 'package:bekya/features/register/manager/register_cubit.dart';
-import 'package:bekya/features/register/model/register_data.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/utils/snack_bar.dart';
+import 'package:momayaz/core/widgets/app_button.dart';
+import 'package:momayaz/core/widgets/app_text_field.dart';
+import 'package:momayaz/features/login/view/screens/login_screen.dart';
+import 'package:momayaz/features/main/view/screens/main_screen.dart';
+import 'package:momayaz/features/register/manager/register_cubit.dart';
+import 'package:momayaz/features/register/model/register_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                               children: [
 
                                 Text(
-                                  "BEKYA",
+                                  "momayaz",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.offWhite,

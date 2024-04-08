@@ -1,4 +1,4 @@
-import 'package:bekya/core/shared/my_shared_keys.dart';
+import 'package:momayaz/core/shared/my_shared_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyShared {

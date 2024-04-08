@@ -1,5 +1,5 @@
-import 'package:bekya/core/models/product_model.dart';
-import 'package:bekya/core/utils/safe_print.dart';
+import 'package:momayaz/core/models/product_model.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

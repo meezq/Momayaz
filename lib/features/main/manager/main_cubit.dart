@@ -1,8 +1,8 @@
-import 'package:bekya/features/chats/view/screens/chats_screen.dart';
-import 'package:bekya/features/home/view/screens/home_screen.dart';
-import 'package:bekya/features/my_ads/view/screens/my_ads_screen.dart';
-import 'package:bekya/features/profile/view/screens/profile_screen.dart';
-import 'package:bekya/features/sell_Product/view/screens/sell_product_screen.dart';
+import 'package:momayaz/features/chats/view/screens/chats_screen.dart';
+import 'package:momayaz/features/home/view/screens/home_screen.dart';
+import 'package:momayaz/features/my_ads/view/screens/my_ads_screen.dart';
+import 'package:momayaz/features/profile/view/screens/profile_screen.dart';
+import 'package:momayaz/features/sell_Product/view/screens/sell_product_screen.dart';
 import 'package:bloc/bloc.dart';
 
 part 'main_state.dart';

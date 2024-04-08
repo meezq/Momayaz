@@ -1,5 +1,5 @@
-import 'package:bekya/core/styles/colors.dart';
-import 'package:bekya/core/widgets/main_category_item.dart';
+import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/widgets/main_category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
