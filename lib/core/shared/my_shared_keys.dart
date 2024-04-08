@@ -1,0 +1,17 @@
+enum MySharedKeys {
+  firstOpen,
+  username,
+  userid,
+  password,
+  logged,
+  userType,
+  email,
+  phone,
+  imageUrl,
+  gender,
+  dateOfBirth,
+  theme,
+  city,
+  cityId,
+  currentLanguage, userImage, isVerified,
+}
