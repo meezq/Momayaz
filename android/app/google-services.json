@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "639142710201",
-    "project_id": "bekya-9038f",
-    "storage_bucket": "bekya-9038f.appspot.com"
+    "project_number": "441479778050",
+    "project_id": "momayaz-c20b5",
+    "storage_bucket": "momayaz-c20b5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:639142710201:android:4af540164e8b6c7a1f8468",
+        "mobilesdk_app_id": "1:441479778050:android:9ac8e560ae42f06e057c1b",
         "android_client_info": {
-          "package_name": "com.example.bekya"
+          "package_name": "com.example.momayaz"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD0oidchsz5jCGzG31jf-gdxR76edI_EdM"
+          "current_key": "AIzaSyBvKmekEyavdcUXImXN_7DKhcBYI9TMQ8I"
         }
       ],
       "services": {
