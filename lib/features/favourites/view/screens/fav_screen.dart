@@ -3,8 +3,44 @@ import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class FavScreen extends StatelessWidget {
+class FavScreen extends StatefulWidget {
   const FavScreen({super.key});
+
+  @override
+  State<FavScreen> createState() => _FavScreenState();
+}
+
+class _FavScreenState extends State<FavScreen> {
+  List<MainProductItem> products = [
+    MainProductItem(
+      price: 'EGP 9,000,000',
+      title: 'Mercedes AMG GT 63',
+      date: '1 month ago.',
+      city: 'El kersh',
+      bed: 0,
+      bath: 0,
+      area: 0,
+      isFav: true,
+      image: 'https://i.ibb.co/LdYMkFJ/pexels-mike-bird-112460.jpg',
+      onFavTap: () {},
+      productId: '',
+      catId: '',
+    ),
+    MainProductItem(
+      price: 'EGP 5,000,000',
+      title: 'Jeep Grand Cherokee',
+      date: '3 month ago.',
+      city: 'El kersh',
+      bed: 0,
+      bath: 0,
+      area: 0,
+      isFav: true,
+      image: 'https://i.ibb.co/SP6wv5D/pexels-aaron-curtis-119435.jpg',
+      onFavTap: () {},
+      productId: '',
+      catId: '',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +66,9 @@ class FavScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return MainProductItem(
-                  price: 'EGP 1,000,000',
-                  title:
-                      'sdf sdfsdf sdf sdfsd fsd f sdf dsf sdf sd fds fsd f sdf dsf dsf sd fsd fsdf s',
-                  date: '3 days ago.',
-                  city: 'Cairo, Future City',
-                  bed: 5,
-                  bath: 7,
-                  area: 500,
-                  isFav: true,
-                  image:
-
-                      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmlsbGF8ZW58MHx8MHx8fDA%3D',
-                  onFavTap: () {}, productId: '', catId: '',
-                );
+                return products[index];
               },
-              itemCount: 2,
+              itemCount: products.length,
             ),
           ),
         ],
