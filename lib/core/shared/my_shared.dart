@@ -35,8 +35,7 @@ class MyShared {
   }
 
   static bool isLoggedIn() {
-    return (_preferences?.getString(MySharedKeys.userid.name) ?? "")
-        .isNotEmpty;
+    return (_preferences?.getString(MySharedKeys.userid.name) ?? "").isNotEmpty;
   }
 
   static Future<bool> putInt({

@@ -7,23 +7,26 @@ part 'product_details_state.dart';
 
 class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   ProductDetailsCubit() : super(ProductDetailsInitial());
- late ProductModel productModel;
+  late ProductModel productModel;
   final firestore = FirebaseFirestore.instance;
 
-  void geProducts({required String id,required String productId}) {
+  void geProducts({required String id, required String productId}) {
     emit(ProductDetailsLoading());
-    firestore.collection("categories").doc(id).collection(id).doc(productId).snapshots().listen((value) {
+    firestore
+        .collection("categories")
+        .doc(id)
+        .collection(id)
+        .doc(productId)
+        .snapshots()
+        .listen((value) {
       safePrint("message");
       productModel = ProductModel.fromMap(value.data()!);
       safePrint(value.data());
       safePrint(value.toString());
       emit(ProductDetailsSuccess());
-
     }).onError((error) {
-
       emit(ProductDetailsFailure());
       safePrint("===============>$error");
-
     });
   }
 }
