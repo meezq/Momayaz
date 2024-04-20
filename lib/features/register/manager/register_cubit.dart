@@ -32,6 +32,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         firestore.collection("users").doc(firebaseAuth.currentUser!.uid).collection("favourites");
 
       });
+      firebaseAuth.currentUser!.sendEmailVerification();
       emit(RegisterSuccess());
     }).catchError((error){
       safePrint("error============> ${error.toString()}");
