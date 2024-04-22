@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SliderDetails extends StatelessWidget {
-   SliderDetails({super.key, required this.imgList});
+   const SliderDetails({super.key, required this.imgList});
 
 final List<dynamic> imgList;
   @override

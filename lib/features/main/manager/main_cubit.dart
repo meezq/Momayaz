@@ -9,36 +9,32 @@ part 'main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
   MainCubit() : super(MainInitial());
-int index = 0;
+  int index = 0;
   List screens = [
     const HomeScreen(),
-     ChatsScreen(),
-     SellProductScreen(),
+    ChatsScreen(),
+    SellProductScreen(),
     const MyAdsScreen(),
     const ProfileScreen(),
   ];
 
-  void goToHome(){
+  void goToHome() {
     index = 0;
     emit(MainHome());
   }
-  void goToChats(){
+
+  void goToChats() {
     index = 1;
     emit(MainChats());
   }
-  void goToAds(){
+
+  void goToAds() {
     index = 3;
     emit(MainCategories());
   }
 
-
-
-  void goToProfile(){
+  void goToProfile() {
     index = 4;
     emit(MainChats());
   }
-
-
-
-
 }

@@ -1,4 +1,4 @@
-import 'package:momayaz/core/cubit/categories/categories_cubit.dart';
+import 'package:momayaz/features/categories/manager/categories_cubit.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/categories_item.dart';

@@ -39,37 +39,19 @@ class ProductModel {
   String? _vType;
 
   ///
-  String? _aModelName;
-  String? _aCondition;
+  String? _shippingType;
 
   ///
-  String? _fashionModelName;
-  String? _fashionCondition;
+  String? _carServiceType;
 
-  ///
-  String? _furnitureType;
-  String? _furnitureCondition;
+  String get dimensions => _dimensions ?? "";
 
-  ///
-  String? _mobileModelName;
-  String? _mobileCondition;
-  String? _mobileRam;
-  String? _mobilStorage;
-
-  ///
-  String? _name;
-  String? _age;
-
-  String get area => _area ?? "";
-
-  set area(String value) {
-    _area = value;
+  set dimensions(String value) {
+    _dimensions = value;
   }
 
-  String? _area;
-  String? _numberOfPathRooms;
-  String? _numberOfBedRooms;
-  String? _propertyType;
+  String? _dimensions;
+  String? _partType;
 
   String get title => _title ?? "";
 
@@ -79,94 +61,22 @@ class ProductModel {
 
   String get category => _category ?? "";
 
-  String get propertyType => _propertyType ?? "";
+  String get partType => _partType ?? "";
 
-  set propertyType(String value) {
-    _propertyType = value;
+  set partType(String value) {
+    _partType = value;
   }
 
-  String get numberOfBedRooms => _numberOfBedRooms ?? "";
+  String get carServiceType => _carServiceType ?? "";
 
-  set numberOfBedRooms(String value) {
-    _numberOfBedRooms = value;
+  set carServiceType(String value) {
+    _carServiceType = value;
   }
 
-  String get numberOfPathRooms => _numberOfPathRooms ?? "";
+  String get shippingType => _shippingType ?? "";
 
-  set numberOfPathRooms(String value) {
-    _numberOfPathRooms = value;
-  }
-
-  String get age => _age ?? "";
-
-  set age(String value) {
-    _age = value;
-  }
-
-  String get name => _name ?? "";
-
-  set name(String value) {
-    _name = value;
-  }
-
-  String get mobilStorage => _mobilStorage ?? "";
-
-  set mobilStorage(String value) {
-    _mobilStorage = value;
-  }
-
-  String get mobileRam => _mobileRam ?? "";
-
-  set mobileRam(String value) {
-    _mobileRam = value;
-  }
-
-  String get mobileCondition => _mobileCondition ?? "";
-
-  set mobileCondition(String value) {
-    _mobileCondition = value;
-  }
-
-  String get mobileModelName => _mobileModelName ?? "";
-
-  set mobileModelName(String value) {
-    _mobileModelName = value;
-  }
-
-  String get furnitureCondition => _furnitureCondition ?? "";
-
-  set furnitureCondition(String value) {
-    _furnitureCondition = value;
-  }
-
-  String get furnitureType => _furnitureType ?? "";
-
-  set furnitureType(String value) {
-    _furnitureType = value;
-  }
-
-  String get fashionCondition => _fashionCondition ?? "";
-
-  set fashionCondition(String value) {
-    _fashionCondition = value;
-  }
-
-  String get fashionModelName => _fashionModelName ?? "";
-
-  set fashionModelName(String value) {
-    _fashionModelName = value;
-  }
-
-  String get aCondition => _aCondition ?? "";
-
-  set aCondition(String value) {
-    _aCondition = value;
-  }
-
-  String get aModelName => _aModelName ?? "";
-
-  set aModelName(String value) {
-    _aModelName = value;
+  set shippingType(String value) {
+    _shippingType = value;
   }
 
   String get vType => _vType ?? "";
@@ -239,7 +149,7 @@ class ProductModel {
     _category = value;
   }
 
-  ProductModel.fromMap(Map<String, dynamic> map) {
+  ProductModel.fromMap(String id, Map<String, dynamic> map) {
     _categoryId = map['categoryId'];
     _title = map['title'];
     _category = map['category'];
@@ -250,24 +160,12 @@ class ProductModel {
     _location = map['location'];
     _userName = map['userName'];
     _userId = map['userId'];
-    _productId = map['id'];
+    _productId = id;
     _userImage = map['userImage'];
-    _aModelName = map['modelName'];
-    _aCondition = map['condition'];
-    _fashionModelName = map['modelName'];
-    _fashionCondition = map['condition'];
-    _furnitureType = map['type'];
-    _fashionCondition = map['condition'];
-    _mobileModelName = map['modelName'];
-    _mobileCondition = map['condition'];
-    _mobileRam = map['ram'];
-    _mobilStorage = map['storage'];
-    _name = map['name'];
-    _age = map['age'];
-    _propertyType = map['type'];
-    _area = map['area'];
-    _numberOfBedRooms = map['numberOfBedRooms'];
-    _numberOfPathRooms = map['numberOfBathRooms'];
+    _shippingType = map['type'];
+    _carServiceType = map['type'];
+    _partType = map['type'];
+    _dimensions = map['area'];
 
     _vName = map['name'];
     _vColor = map['color'];
@@ -276,38 +174,27 @@ class ProductModel {
   }
 
   ProductModel(
-      this._productId,
-      this._area,
-      this._title,
-      this._category,
-      this._categoryId,
-      this._price,
-      this._date,
-      this._description,
-      this._location,
-      this._userName,
-      this._userId,
-      this._userImage,
-      this._images,
-      this._vName,
-      this._vModel,
-      this._vColor,
-      this._vType,
-      this._aModelName,
-      this._aCondition,
-      this._fashionModelName,
-      this._fashionCondition,
-      this._furnitureType,
-      this._furnitureCondition,
-      this._mobileModelName,
-      this._mobileCondition,
-      this._mobileRam,
-      this._mobilStorage,
-      this._name,
-      this._age,
-      this._numberOfPathRooms,
-      this._numberOfBedRooms,
-      this._propertyType) {
+    this._productId,
+    this._dimensions,
+    this._title,
+    this._category,
+    this._categoryId,
+    this._price,
+    this._date,
+    this._description,
+    this._location,
+    this._userName,
+    this._userId,
+    this._userImage,
+    this._images,
+    this._vName,
+    this._vModel,
+    this._vColor,
+    this._vType,
+    this._shippingType,
+    this._carServiceType,
+    this._partType,
+  ) {
     _title = title;
   }
 }

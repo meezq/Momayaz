@@ -10,7 +10,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   late ProductModel productModel;
   final firestore = FirebaseFirestore.instance;
 
-  void geProducts({required String id, required String productId}) {
+  void getProducts({required String id, required String productId}) {
     emit(ProductDetailsLoading());
     firestore
         .collection("categories")
@@ -20,7 +20,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         .snapshots()
         .listen((value) {
       safePrint("message");
-      productModel = ProductModel.fromMap(value.data()!);
+      productModel = ProductModel.fromMap(value.id,value.data()!);
       safePrint(value.data());
       safePrint(value.toString());
       emit(ProductDetailsSuccess());

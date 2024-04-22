@@ -13,6 +13,7 @@ class HomeCategoriesWidgets extends StatelessWidget {
     super.key,
     required this.cats,
   });
+
   final List cats;
 
   @override
@@ -26,22 +27,27 @@ class HomeCategoriesWidgets extends StatelessWidget {
               Text(
                 "Categories",
                 style: TextStyle(
-                    color: AppColors.offWhite,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp),
+                  color: AppColors.offWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                ),
               ),
               const Spacer(),
               InkWell(
                 onTap: () {
                   push(
-                      context,
-                      CategoriesScreen(
-                        cats: cats,
-                      ));
+                    context,
+                    CategoriesScreen(
+                      cats: cats,
+                    ),
+                  );
                 },
                 child: Text(
                   "see all",
-                  style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp),
+                  style: TextStyle(
+                    color: AppColors.offWhite,
+                    fontSize: 15.sp,
+                  ),
                 ),
               ),
               SizedBox(
@@ -64,7 +70,13 @@ class HomeCategoriesWidgets extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      push(context,  CategoryProducts(id: cats[index].id, category: cats[index].category,));
+                      push(
+                        context,
+                        CategoryProducts(
+                          id: cats[index].id,
+                          category: cats[index].category,
+                        ),
+                      );
                     },
                     child: Column(
                       children: [
@@ -72,8 +84,9 @@ class HomeCategoriesWidgets extends StatelessWidget {
                         Text(
                           cats[index].category,
                           style: TextStyle(
-                              color: AppColors.offWhite, fontSize: 14.sp),
-
+                            color: AppColors.offWhite,
+                            fontSize: 14.sp,
+                          ),
                         )
                       ],
                     ),

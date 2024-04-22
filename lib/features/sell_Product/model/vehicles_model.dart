@@ -1,15 +1,15 @@
-
-class VehiclesModel{
+class VehiclesModel {
   String? _name;
   String? _model;
-
   String? _color;
   String? _type;
 
-
-  VehiclesModel( this._name, this._model,
-      this._color, this._type);
-
+  VehiclesModel(
+    this._name,
+    this._model,
+    this._color,
+    this._type,
+  );
 
   String get name => _name ?? "";
 
@@ -23,9 +23,7 @@ class VehiclesModel{
     _model = value;
   }
 
-
-
-  String get color => _color ??"";
+  String get color => _color ?? "";
 
   set color(String value) {
     _color = value;
@@ -45,6 +43,4 @@ class VehiclesModel{
     map['type'] = type;
     return map;
   }
-
-
 }

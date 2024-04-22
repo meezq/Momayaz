@@ -16,7 +16,6 @@ class ChatsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => cubit..getChats(),
       child: Scaffold(
-
         backgroundColor: AppColors.second,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,40 +31,35 @@ class ChatsScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-
-
               child: BlocBuilder<ChatsCubit, ChatsState>(
                 builder: (context, state) {
                   return ListView.separated(
                     itemBuilder: (context, index) {
                       safePrint("======> ${cubit.chats.length}");
                       return ChatItem(
-                        image: 'M', name: cubit.chats[index].name,
-                        message: '............',
-                        date: '24/11', receiverId: cubit.chats[index].id,);
+                        image: '',
+                        name: cubit.chats[index].name,
+                        message: '',
+                        date: '',
+                        receiverId: cubit.chats[index].id,
+                      );
                     },
-
-
                     itemCount: cubit.chats.length,
                     separatorBuilder: (BuildContext context, int index) {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 20.sp),
                         child: Divider(
-
-
                           thickness: 1.sp,
-
-
                           color: Colors.grey[200],
                         ),
-
                       );
                     },
                   );
                 },
               ),
             ),
-          ],),
+          ],
+        ),
       ),
     );
   }
