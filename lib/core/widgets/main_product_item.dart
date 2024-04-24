@@ -1,26 +1,25 @@
 import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MainProductItem extends StatelessWidget {
-  const MainProductItem(
-      {super.key,
-      required this.price,
-      required this.title,
-      required this.date,
-      required this.city,
-      required this.bed,
-      required this.bath,
-      required this.area,
-      required this.isFav,
-      required this.image,
-      required this.onFavTap,
-      required this.productId,
-      required this.catId});
+  const MainProductItem({
+    super.key,
+    required this.price,
+    required this.title,
+    required this.date,
+    required this.city,
+    required this.isFav,
+    required this.image,
+    required this.onFavTap,
+    required this.productId,
+    required this.catId,
+  });
 
   final String image, price, title, date, city;
-  final int bed, bath, area;
   final bool isFav;
   final VoidCallback onFavTap;
   final String productId;
@@ -30,12 +29,13 @@ class MainProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // push(
-        //     context,
-        //     ProductDetailsScreen(
-        //       productId: productId,
-        //       catId: catId,
-        //     ));
+        push(
+          context,
+          ProductDetailsScreen(
+            productId: productId,
+            catId: catId,
+          ),
+        );
       },
       child: Container(
           margin: EdgeInsets.all(10.sp),

@@ -18,32 +18,52 @@ class _HomeScreenState extends State<HomeScreen> {
   final cubit = HomeCubit();
 
   @override
+  void initState() {
+    super.initState();
+    cubit.getHome();
+    cubit.getAds();
+    cubit.getCats();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>cubit..getCat(),
+      create: (context) => cubit,
       child: Container(
         margin: EdgeInsets.all(13.sp),
-
         child: LayoutBuilder(
-          builder: (context, constrains) =>
-              SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constrains.maxHeight,
-                  ),
-                  child: IntrinsicHeight(
-                    child: Column(
-                      children: [
-
-                        const HomeAppBar(),
-                        HomeCategoriesWidgets(cats: cubit.cats,),
-                        HomeSlider(),
-                        const ProductsItem(title: 'Cars For Sale',),
-                        const ProductsItem(title: 'Cars For Rent',),
-                      ],),
-                  ),
+          builder: (context, constrains) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constrains.maxHeight,
+              ),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    const HomeAppBar(),
+                    HomeCategoriesWidgets(
+                      cats: cubit.cats,
+                    ),
+                    const HomeSlider(),
+                    BlocBuilder<HomeCubit, HomeState>(
+                      builder: (context, state) => cubit.sell.isEmpty
+                          ? const SizedBox()
+                          : const ProductsItem(
+                              title: 'Cars For Sale',
+                            ),
+                    ),
+                    BlocBuilder<HomeCubit, HomeState>(
+                      builder: (context, state) => cubit.rent.isEmpty
+                          ? const SizedBox()
+                          : const ProductsItem(
+                              title: 'Cars For Rent',
+                            ),
+                    ),
+                  ],
                 ),
               ),
+            ),
+          ),
         ),
       ),
     );

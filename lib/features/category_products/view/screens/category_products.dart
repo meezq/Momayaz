@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoryProducts extends StatelessWidget {
-   CategoryProducts({super.key, required this.id, required this.category});
+  CategoryProducts({super.key, required this.id, required this.category});
+
   final cubit = CategoriesProductCubit();
 
   final String id;
@@ -16,13 +17,10 @@ class CategoryProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      cubit
-        ..geProducts(id: id),
+      create: (context) => cubit..getProducts(id: id),
       child: BlocBuilder<CategoriesProductCubit, CategoriesProductState>(
         builder: (context, state) {
           return Scaffold(
-
             appBar: AppBar(
               backgroundColor: Colors.grey[900],
               toolbarHeight: 0,
@@ -59,15 +57,12 @@ class CategoryProducts extends StatelessWidget {
                       return MainProductItem(
                         price: cubit.productModel[index].price,
                         title: cubit.productModel[index].title,
-                        date: cubit.productModel[index].date.substring(0,10),
+                        date: cubit.productModel[index].date.substring(0, 10),
                         city: cubit.productModel[index].location,
-
-                        bed: 5,
-                        bath: 7,
-                        area: 500,
                         isFav: true,
-                        image:  cubit.productModel[index].images[0],
-                        onFavTap: () {}, productId: cubit.productModel[index].productId,
+                        image: cubit.productModel[index].images[0],
+                        onFavTap: () {},
+                        productId: cubit.productModel[index].productId,
                         catId: id,
                       );
                     },

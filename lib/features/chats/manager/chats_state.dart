@@ -4,3 +4,9 @@ part of 'chats_cubit.dart';
 abstract class ChatsState {}
 
 class ChatsInitial extends ChatsState {}
+
+class MessageSendSuccess extends ChatsState {}
+
+class MessageGetSuccess extends ChatsState {}
+
+

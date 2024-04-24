@@ -17,7 +17,7 @@ class UserAdsCubit extends Cubit<UserAdsState> {
       safePrint("message");
       productModel.clear();
       for (var document in value.docs) {
-        final category = ProductModel.fromMap(document.data());
+        final category = ProductModel.fromMap(document.id,document.data());
         productModel.add(category);
         safePrint(productModel.length);
         emit(UserAdsSuccess());

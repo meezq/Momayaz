@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "441479778050",
-    "project_id": "momayaz-c20b5",
-    "storage_bucket": "momayaz-c20b5.appspot.com"
+    "project_number": "81808953758",
+    "project_id": "momayaz-e90a5",
+    "storage_bucket": "momayaz-e90a5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:441479778050:android:9ac8e560ae42f06e057c1b",
+        "mobilesdk_app_id": "1:81808953758:android:ef4e0e6e85c0ad4fa3c68f",
         "android_client_info": {
           "package_name": "com.example.momayaz"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBvKmekEyavdcUXImXN_7DKhcBYI9TMQ8I"
+          "current_key": "AIzaSyAQezECyHs98zQyQGaBJmBkpiyMDV76FmU"
         }
       ],
       "services": {

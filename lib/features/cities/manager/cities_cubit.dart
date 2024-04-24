@@ -14,7 +14,7 @@ class CitiesCubit extends Cubit<CitiesState> {
 
   void getCities() {
     emit(CitiesLoading());
-    firestore.collection("cites").get().then((value) {
+    firestore.collection("cities").get().then((value) {
       cities.clear();
       for (var document in value.docs) {
         final category = Cities.fromMap(document.data());

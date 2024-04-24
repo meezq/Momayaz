@@ -15,96 +15,85 @@ class ChatsCubit extends Cubit<ChatsState> {
   List<Chats> chats = [];
   FirebaseFirestore firebase = FirebaseFirestore.instance;
   TextEditingController messageController = TextEditingController();
-  sendMessage({required String receiverId,required String senderName}) {
+
+  sendMessage({required String receiverId, required String senderName}) {
     Message message = Message(
         message: messageController.text,
         dateTime: "${DateTime.now().hour}:${DateTime.now().minute}",
         receiverId: receiverId,
         senderId: MyShared.getString(key: MySharedKeys.userid));
 
-
     firebase
         .collection("users")
         .doc(MyShared.getString(key: MySharedKeys.userid))
         .collection("chats")
-        .doc(receiverId).set({
-      "name": senderName,
-      "id":receiverId
-
-
-    }).then((value) {
+        .doc(receiverId)
+        .set({"name": senderName, "id": receiverId}).then((value) {
       firebase
-
           .collection("users")
           .doc(MyShared.getString(key: MySharedKeys.userid))
           .collection("chats")
-          .doc(receiverId).collection(receiverId)
+          .doc(receiverId)
+          .collection(receiverId)
           .add(message.toJson())
           .then((value) {
-      firebase
-          .collection("users")
-          .doc(receiverId)
-          .collection("chats")
-          .doc(MyShared.getString(key: MySharedKeys.userid))
-          .set({
-        "name": MyShared.getString(key: MySharedKeys.username),
-        "id":MyShared.getString(key: MySharedKeys.userid)
-      }).then((value) {
-
-
         firebase
             .collection("users")
             .doc(receiverId)
             .collection("chats")
             .doc(MyShared.getString(key: MySharedKeys.userid))
-            .collection(MyShared.getString(key: MySharedKeys.userid))
-            .add(message.toJson()).then((value) {
-          messageController.clear();
-          getChat(chatId: receiverId);
-
+            .set({
+          "name": MyShared.getString(key: MySharedKeys.username),
+          "id": MyShared.getString(key: MySharedKeys.userid)
+        }).then((value) {
+          firebase
+              .collection("users")
+              .doc(receiverId)
+              .collection("chats")
+              .doc(MyShared.getString(key: MySharedKeys.userid))
+              .collection(MyShared.getString(key: MySharedKeys.userid))
+              .add(message.toJson())
+              .then((value) {
+            messageController.clear();
+            getChat(chatId: receiverId);
+            emit(MessageSendSuccess());
+          });
         });
-
-
-      });
-
       });
     });
-
   }
-  getChat({required String chatId}){
 
-    firebase.collection("users").doc(MyShared.getString(key: MySharedKeys.userid))
-    .collection("chats").doc(chatId).collection(chatId).snapshots().listen((value) {
+  getChat({required String chatId}) {
+    firebase
+        .collection("users")
+        .doc(MyShared.getString(key: MySharedKeys.userid))
+        .collection("chats")
+        .doc(chatId)
+        .collection(chatId)
+        .snapshots()
+        .listen((value) {
       messages.clear();
-      for(var doc in value.docs){
+      for (var doc in value.docs) {
         final message = Message.fromMap(doc.data());
         messages.add(message);
-
-
       }
-
-
-
-
-
-
-
-
-
+      emit(MessageGetSuccess());
     });
-
-
   }
 
-
-  getChats(){
-    firebase.collection("users").doc(MyShared.getString(key: MySharedKeys.userid)).
-    collection('chats').get().then((value) {
+  getChats() {
+    firebase
+        .collection("users")
+        .doc(MyShared.getString(key: MySharedKeys.userid))
+        .collection('chats')
+        .get()
+        .then((value) {
       chats.clear();
-      for(var doc in value.docs) {
+      for (var doc in value.docs) {
         final chat = Chats.fromMap(doc.data());
         chats.add(chat);
       }
+      emit(MessageGetSuccess());
     });
   }
 }

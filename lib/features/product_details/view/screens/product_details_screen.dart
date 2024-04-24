@@ -22,13 +22,15 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..geProducts(id: catId, productId: productId),
+      create: (context) => cubit..getProducts(id: catId, productId: productId),
       child: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
         builder: (context, state) {
           if (state is ProductDetailsLoading) {
             return const Scaffold(
               backgroundColor: AppColors.second,
-              body: Center(child: CircularProgressIndicator()),
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           } else {
             return Scaffold(
@@ -167,13 +169,9 @@ class ProductDetailsScreen extends StatelessWidget {
                                 height: 2.h,
                               ),
                               ProductDetailsWidget(
-                                  type: cubit.productModel.vType,
-                                  area: cubit.productModel.area,
-                                  bedRooms: cubit.productModel.numberOfBedRooms,
-                                  bathRooms:
-                                      cubit.productModel.numberOfPathRooms,
-                                  payment: '',
-                                  description: cubit.productModel.description),
+                                type: cubit.productModel.vType,
+                                description: cubit.productModel.description,
+                              ),
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 20.sp),
                                 child: Divider(
@@ -195,9 +193,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                         Text(
                                           cubit.productModel.userName,
                                           style: TextStyle(
-                                              color: AppColors.offWhite,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18.sp),
+                                            color: AppColors.offWhite,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18.sp,
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 2.h,
@@ -206,15 +205,15 @@ class ProductDetailsScreen extends StatelessWidget {
                                           children: [
                                             InkWell(
                                               onTap: () => push(
-                                                  context,
-                                                  UserAdsScreen(
-                                                    id: cubit
-                                                        .productModel.userId,
-                                                    name: cubit
-                                                        .productModel.userName,
-                                                    image: cubit
-                                                        .productModel.userImage,
-                                                  )),
+                                                context,
+                                                UserAdsScreen(
+                                                  id: cubit.productModel.userId,
+                                                  name: cubit
+                                                      .productModel.userName,
+                                                  image: cubit
+                                                      .productModel.userImage,
+                                                ),
+                                              ),
                                               child: Text(
                                                 "See profile",
                                                 style: TextStyle(
@@ -235,11 +234,36 @@ class ProductDetailsScreen extends StatelessWidget {
                                       ],
                                     ),
                                     const Spacer(),
-                                    AppImage(
-                                        imageUrl:
-                                            'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
+                                    Visibility(
+                                      visible:
+                                          cubit.productModel.userImage == ''
+                                              ? false
+                                              : true,
+                                      replacement: Container(
                                         width: 20.w,
-                                        height: 10.h)
+                                        height: 10.h,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: AppColors.primary,
+                                          borderRadius:
+                                              BorderRadius.circular(14.sp),
+                                        ),
+                                        child: Text(
+                                          cubit.productModel.userName
+                                              .substring(0, 1),
+                                          style: TextStyle(
+                                            fontSize: 30.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      child: AppImage(
+                                        imageUrl: cubit.productModel.userImage,
+                                        width: 20.w,
+                                        height: 10.h,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )

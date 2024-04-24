@@ -3,7 +3,6 @@ import 'package:momayaz/core/shared/my_shared_keys.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
-import 'package:momayaz/core/widgets/app_text_field.dart';
 import 'package:momayaz/features/cities/manager/cities_cubit.dart';
 import 'package:momayaz/features/main/view/screens/main_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CitiesScreen extends StatefulWidget {
- const CitiesScreen({super.key});
+  const CitiesScreen({super.key});
 
   @override
   State<CitiesScreen> createState() => _CitiesScreenState();
@@ -20,11 +19,10 @@ class CitiesScreen extends StatefulWidget {
 class _CitiesScreenState extends State<CitiesScreen> {
   final cubit = CitiesCubit();
 
-final TextEditingController searchController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => cubit..getCities(),
       child: Scaffold(
@@ -51,48 +49,55 @@ final TextEditingController searchController = TextEditingController();
                   Text(
                     "Pick Location",
                     style: TextStyle(
-                        color: AppColors.offWhite,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.bold),
+                      color: AppColors.offWhite,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 2.h,),
+            SizedBox(
+              height: 2.h,
+            ),
             // AppTextField(
-            //     onFieldSubmitted: (value){
-            //       setState(() {
-            //
-            //       });
-            //     },
-            //     hint: "cairo",
-            //     keyboardType: TextInputType.text,
-            //     icon: Icons.search_outlined,
-            //     controller: TextEditingController(),
-            //     isPassword: false,
-            //     textInputAction: TextInputAction.search,
-            //     title: "search for city"),
-            // SizedBox(height: 2.h,),
+            //   onFieldSubmitted: (value) {
+            //     setState(() {});
+            //   },
+            //   hint: "cairo",
+            //   keyboardType: TextInputType.text,
+            //   icon: Icons.search_outlined,
+            //   controller: searchController,
+            //   isPassword: false,
+            //   textInputAction: TextInputAction.search,
+            //   title: "search for city",
+            // ),
+            SizedBox(
+              height: 2.h,
+            ),
             BlocBuilder<CitiesCubit, CitiesState>(
               builder: (context, state) {
                 return Expanded(
                   child: ListView.separated(
                     itemBuilder: (context, index) {
                       return Visibility(
-                        visible: searchController.text.contains(cubit.cities[index].city) || searchController.text.isEmpty,
+                        visible: searchController.text
+                                .contains(cubit.cities[index].city) ||
+                            searchController.text.isEmpty,
+                        maintainSize: false,
                         child: InkWell(
                           onTap: () {
                             MyShared.putString(
-                                    key: MySharedKeys.city,
-                                    value: cubit.cities[index].city)
-                                .then((value) {
+                              key: MySharedKeys.city,
+                              value: cubit.cities[index].city,
+                            ).then((value) {
                               MyShared.putString(
                                       key: MySharedKeys.cityId,
                                       value: cubit.cities[index].id)
                                   .then((value) {
-                                pushReplacement(context, MainScreen());
-                                safePrint(
-                                    MyShared.getString(key: MySharedKeys.cityId));
+                                pushReplacement(context, const MainScreen());
+                                safePrint(MyShared.getString(
+                                    key: MySharedKeys.cityId));
                                 safePrint(
                                     MyShared.getString(key: MySharedKeys.city));
                               });
@@ -125,7 +130,6 @@ final TextEditingController searchController = TextEditingController();
                 );
               },
             ),
-
           ],
         ),
       ),

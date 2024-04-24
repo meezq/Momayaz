@@ -1,7 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:momayaz/core/styles/colors.dart';
+import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/home/manager/home_cubit.dart';
+import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProductsItem extends StatefulWidget {
@@ -14,67 +18,6 @@ class ProductsItem extends StatefulWidget {
 }
 
 class _ProductsItemState extends State<ProductsItem> {
-  List<MainProductItem> sell = [
-    MainProductItem(
-      price: 'EGP 9,000,000',
-      title: 'Mercedes AMG GT 63',
-      date: '1 month ago.',
-      city: 'El kersh',
-      bed: 0,
-      bath: 0,
-      area: 0,
-      isFav: true,
-      image: 'https://i.ibb.co/LdYMkFJ/pexels-mike-bird-112460.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-    MainProductItem(
-      price: 'EGP 5,000,000',
-      title: 'Jeep Grand Cherokee',
-      date: '3 month ago.',
-      city: 'El kersh',
-      bed: 0,
-      bath: 0,
-      area: 0,
-      isFav: true,
-      image: 'https://i.ibb.co/SP6wv5D/pexels-aaron-curtis-119435.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-  ];
-  List<MainProductItem> rent = [
-    MainProductItem(
-      price: 'EGP 5000/day',
-      title: 'Mercedes AMG GT 63',
-      date: '1 month ago.',
-      city: 'El kersh',
-      bed: 0,
-      bath: 0,
-      area: 0,
-      isFav: false,
-      image: 'https://i.ibb.co/LdYMkFJ/pexels-mike-bird-112460.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-    MainProductItem(
-      price: 'EGP 3000',
-      title: 'Jeep Grand Cherokee',
-      date: '3 month ago.',
-      city: 'El kersh',
-      bed: 0,
-      bath: 0,
-      area: 0,
-      isFav: false,
-      image: 'https://i.ibb.co/SP6wv5D/pexels-aaron-curtis-119435.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,9 +35,7 @@ class _ProductsItemState extends State<ProductsItem> {
               ),
               const Spacer(),
               InkWell(
-                onTap: () {
-                  /// on Taaaaaaaaaaaaaap
-                },
+                onTap: () {},
                 child: Text(
                   "see all",
                   style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp),
@@ -115,20 +56,64 @@ class _ProductsItemState extends State<ProductsItem> {
           color: AppColors.second,
           height: 40.h,
           child: ListView.builder(
-            itemCount:
-                widget.title == 'Cars For Sale' ? sell.length : rent.length,
+            itemCount: widget.title == 'Cars For Sale'
+                ? BlocProvider.of<HomeCubit>(context).sell.length
+                : BlocProvider.of<HomeCubit>(context).rent.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              MainProductItem product =
-                  widget.title == 'Cars For Sale' ? sell[index] : rent[index];
+              MainProductItem product = widget.title == 'Cars For Sale'
+                  ? MainProductItem(
+                      price:
+                          BlocProvider.of<HomeCubit>(context).sell[index].price,
+                      title:
+                          BlocProvider.of<HomeCubit>(context).sell[index].title,
+                      date:
+                          BlocProvider.of<HomeCubit>(context).sell[index].date,
+                      city: BlocProvider.of<HomeCubit>(context)
+                          .sell[index]
+                          .location,
+                      isFav: false,
+                      image: BlocProvider.of<HomeCubit>(context)
+                          .sell[index]
+                          .images[0],
+                      onFavTap: () {},
+                      productId: BlocProvider.of<HomeCubit>(context)
+                          .sell[index]
+                          .productId,
+                      catId: BlocProvider.of<HomeCubit>(context)
+                          .sell[index]
+                          .categoryId,
+                    )
+                  : MainProductItem(
+                      price:
+                          BlocProvider.of<HomeCubit>(context).rent[index].price,
+                      title:
+                          BlocProvider.of<HomeCubit>(context).rent[index].title,
+                      date:
+                          BlocProvider.of<HomeCubit>(context).rent[index].date,
+                      city: BlocProvider.of<HomeCubit>(context)
+                          .rent[index]
+                          .location,
+                      isFav: false,
+                      image: BlocProvider.of<HomeCubit>(context)
+                          .rent[index]
+                          .images[0],
+                      onFavTap: () {},
+                      productId: BlocProvider.of<HomeCubit>(context)
+                          .rent[index]
+                          .productId,
+                      catId: BlocProvider.of<HomeCubit>(context)
+                          .rent[index]
+                          .categoryId,
+                    );
               return InkWell(
                 onTap: () {
-                  // push(
-                  //     context,
-                  //     ProductDetailsScreen(
-                  //       productId: '',
-                  //       catId: '',
-                  //     ));
+                  push(
+                      context,
+                      ProductDetailsScreen(
+                        productId: product.productId,
+                        catId: product.catId,
+                      ));
                 },
                 child: Container(
                     margin: EdgeInsets.only(right: 15.sp),

@@ -7,7 +7,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key, required this.cats});
+
   final List cats;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +50,13 @@ class CategoriesScreen extends StatelessWidget {
                   icon: cats[index].image,
                   title: cats[index].category,
                   onTap: () {
-                    push(context,  CategoryProducts(id: cats[index].reciverId, category: cats[index].category,));
+                    push(
+                      context,
+                      CategoryProducts(
+                        id: cats[index].id,
+                        category: cats[index].category,
+                      ),
+                    );
                   },
                 );
               },
@@ -56,7 +64,6 @@ class CategoriesScreen extends StatelessWidget {
             ),
           )
         ],
-
       ),
     );
   }

@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
                     Visibility(
                       visible:
                           MyShared.getBoolean(key: MySharedKeys.isVerified) ==
-                              false,
+                              true,
                       child: Container(
                         color: AppColors.red,
                         padding: EdgeInsets.all(13.sp),
@@ -74,9 +74,13 @@ class _MainScreenState extends State<MainScreen> {
               ),
               bottomNavigationBar: Container(
                 decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(
-                            color: AppColors.offWhite, width: 1.sp))),
+                  border: Border(
+                    top: BorderSide(
+                      color: AppColors.offWhite,
+                      width: 1.sp,
+                    ),
+                  ),
+                ),
                 child: BottomNavigationBar(
                   currentIndex: cubit.index,
                   onTap: (value) {

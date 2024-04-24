@@ -3,16 +3,13 @@ class Categories {
   String? _category;
   String? _image;
 
-  Categories(this._id, this._image,this._category);
+  Categories(this._id, this._image, this._category);
 
-  Categories.fromMap(Map<String,dynamic> data){
+  Categories.fromMap(Map<String, dynamic> data) {
     _id = data['id'];
     _category = data['category'];
     _image = data['image'];
   }
-
-
-
 
   String get image => _image ?? "";
 
@@ -22,13 +19,9 @@ class Categories {
 
   String get category => _category ?? "";
 
-
-
   String get id => _id ?? "";
 
   set id(String value) {
     _id = value;
   }
-
-
 }

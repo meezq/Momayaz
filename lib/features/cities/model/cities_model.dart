@@ -2,17 +2,15 @@ class Cities {
   String? _id;
   String? _city;
 
-  Cities(this._id, this._city,);
+  Cities(
+    this._id,
+    this._city,
+  );
 
-  Cities.fromMap(Map<String,dynamic> data){
+  Cities.fromMap(Map<String, dynamic> data) {
     _id = data['id'];
     _city = data['city'];
   }
-
-
-
-
-
 
   String get city => _city ?? "";
 
@@ -30,8 +28,6 @@ class Cities {
     return {
       'id': id,
       'city': city,
-
-
     };
   }
 }
