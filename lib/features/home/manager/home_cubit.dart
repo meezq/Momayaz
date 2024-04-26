@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:momayaz/features/home/model/categories_model.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 part 'home_state.dart';
 
@@ -74,4 +74,6 @@ class HomeCubit extends Cubit<HomeState> {
       throw Exception('Could not launch $url');
     }
   }
+  
+  launchUrl(Uri url) {}
 }

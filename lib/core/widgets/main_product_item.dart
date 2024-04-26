@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:momayaz/features/favourites/add_favourite.dart';
 
 class MainProductItem extends StatelessWidget {
   const MainProductItem({
@@ -75,7 +77,10 @@ class MainProductItem extends StatelessWidget {
                           ),
                           const Spacer(),
                           InkWell(
-                            onTap: onFavTap,
+                            onTap: () {
+                              //isFav = !isFav;
+                              addFav(catId: catId, id: productId);
+                            },
                             child: Icon(
                               isFav == false
                                   ? Icons.favorite_outline

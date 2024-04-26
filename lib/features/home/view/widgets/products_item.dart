@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/favourites/add_favourite.dart';
 import 'package:momayaz/features/home/manager/home_cubit.dart';
 import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -16,6 +18,8 @@ class ProductsItem extends StatefulWidget {
   @override
   State<ProductsItem> createState() => _ProductsItemState();
 }
+
+//bool isliked = FirebaseFirestore.instance.;
 
 class _ProductsItemState extends State<ProductsItem> {
   @override
@@ -72,7 +76,7 @@ class _ProductsItemState extends State<ProductsItem> {
                       city: BlocProvider.of<HomeCubit>(context)
                           .sell[index]
                           .location,
-                      isFav: false,
+                      
                       image: BlocProvider.of<HomeCubit>(context)
                           .sell[index]
                           .images[0],
@@ -83,6 +87,11 @@ class _ProductsItemState extends State<ProductsItem> {
                       catId: BlocProvider.of<HomeCubit>(context)
                           .sell[index]
                           .categoryId,
+                      isFav: true,
+                      //await isLiked(
+                          //BlocProvider.of<HomeCubit>(context).sell[index].categoryId,
+                          //BlocProvider.of<HomeCubit>(context).sell[index].productId,
+                        //),
                     )
                   : MainProductItem(
                       price:
