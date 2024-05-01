@@ -52,9 +52,15 @@ class SellProductCubit extends Cubit<SellProductState> {
     PartModel? propertyModel,
     CarServiceModel? mobilesModel,
     ShippingModel? appliancesModel,
+    required  String carCategoryImage,
+    required String carCategoryId,
+    required String carCategoryName,
   }) {
     emit(SellProductLoading());
-    String id = DateTime.now().millisecond.toString();
+    String id = DateTime
+        .now()
+        .millisecond
+        .toString();
     FirebaseFirestore.instance
         .collection("categories")
         .doc(catId)
@@ -62,61 +68,75 @@ class SellProductCubit extends Cubit<SellProductState> {
         .doc(id)
         .set(sellBaseModel!.toJson())
         .then((value) {
-      FirebaseFirestore.instance
-          .collection("categories")
-          .doc(catId)
-          .collection(catId)
-          .doc(id)
-          .update({"id": id}).then((value) {
-        FirebaseFirestore.instance
-            .collection('users')
-            .doc(MyShared.getString(key: MySharedKeys.userid))
-            .collection("ads")
-            .doc(id)
-            .set(sellBaseModel.toJson());
+      FirebaseFirestore.instance.collection("categories").doc(catId).collection(catId).doc(id).update({
+        "carCategoryImage": carCategoryImage,
+        "carCategoryId": carCategoryId,
+        "carCategoryName": carCategoryName,
       }).then((value) {
-        if (catId == "1") {
-          sellVehicles(vehiclesModel: vehiclesModel, id: id);
 
+        FirebaseFirestore.instance
+            .collection("categories")
+            .doc(catId)
+            .collection(catId)
+            .doc(id)
+            .update({"id": id}).then((value) {
           FirebaseFirestore.instance
               .collection('users')
               .doc(MyShared.getString(key: MySharedKeys.userid))
               .collection("ads")
               .doc(id)
-              .update(vehiclesModel!.toJson());
-          emit(SellProductSuccess());
-        } else if (catId == '2') {
-          sellParts(id: id, propertyModel: propertyModel);
-          FirebaseFirestore.instance
-              .collection('users')
-              .doc(MyShared.getString(key: MySharedKeys.userid))
-              .collection("ads")
-              .doc(id)
-              .update(propertyModel!.toJson());
-          emit(SellProductSuccess());
-        } else if (catId == '3') {
-          sellCarService(id: id, mobilesModel: mobilesModel);
-          FirebaseFirestore.instance
-              .collection('users')
-              .doc(MyShared.getString(key: MySharedKeys.userid))
-              .collection("ads")
-              .doc(id)
-              .update(mobilesModel!.toJson());
-          emit(SellProductSuccess());
-        } else if (catId == "4") {
-          sellShipping(id: id, appliancesModel: appliancesModel);
-          FirebaseFirestore.instance
-              .collection('users')
-              .doc(MyShared.getString(key: MySharedKeys.userid))
-              .collection("ads")
-              .doc(id)
-              .update(appliancesModel!.toJson());
-          emit(SellProductSuccess());
-        }
+              .set(sellBaseModel.toJson());
+        }).then((value) {
+          if (catId == "1") {
+            sellVehicles(vehiclesModel: vehiclesModel, id: id);
+
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(MyShared.getString(key: MySharedKeys.userid))
+                .collection("ads")
+                .doc(id)
+                .update(vehiclesModel!.toJson());
+            emit(SellProductSuccess());
+          } else if (catId == '2') {
+            sellParts(id: id, propertyModel: propertyModel);
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(MyShared.getString(key: MySharedKeys.userid))
+                .collection("ads")
+                .doc(id)
+                .update(propertyModel!.toJson());
+            emit(SellProductSuccess());
+          } else if (catId == '3') {
+            sellCarService(id: id, mobilesModel: mobilesModel);
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(MyShared.getString(key: MySharedKeys.userid))
+                .collection("ads")
+                .doc(id)
+                .update(mobilesModel!.toJson());
+            emit(SellProductSuccess());
+          } else if (catId == "4") {
+            sellShipping(id: id, appliancesModel: appliancesModel);
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(MyShared.getString(key: MySharedKeys.userid))
+                .collection("ads")
+                .doc(id)
+                .update(appliancesModel!.toJson()).then((value) {
+
+              emit(SellProductSuccess());
+
+            });
+          }
+        }).catchError((onError){
+          safePrint("error===============>>>>>>>>>>>>>>>>>>>>>>"+onError.toString());
+
+        });
+        safePrint("done");
+      }).catchError((error) {
+        safePrint("error===============>>>>>>>>>>>>>>>>>>>>>>"+error.toString());
+
       });
-      safePrint("done");
-    }).catchError((error) {
-      safePrint(error.toString());
     });
   }
 

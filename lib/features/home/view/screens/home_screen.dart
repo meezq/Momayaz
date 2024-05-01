@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
       create: (context) => cubit,
       child: Container(
@@ -68,4 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  likeButton(
+      {required int Size, required Icon Function(bool isLiked) likedBuilder}) {}
 }

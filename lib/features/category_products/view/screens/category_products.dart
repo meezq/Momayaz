@@ -7,20 +7,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoryProducts extends StatelessWidget {
-  CategoryProducts({super.key, required this.id, required this.category});
+  CategoryProducts({super.key, required this.id, required this.category, required this.carCatId});
 
   final cubit = CategoriesProductCubit();
-
   final String id;
   final String category;
+  final String carCatId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..getProducts(id: id),
+      create: (context) => cubit..getProducts(id: id, carsCategoryId: carCatId),
       child: BlocBuilder<CategoriesProductCubit, CategoriesProductState>(
         builder: (context, state) {
           return Scaffold(
+             
             appBar: AppBar(
               backgroundColor: Colors.grey[900],
               toolbarHeight: 0,

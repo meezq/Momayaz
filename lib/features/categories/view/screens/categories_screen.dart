@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.cats});
-
+  const CategoriesScreen({super.key, required this.cats, required this.carCategoryId});
+final String carCategoryId;
   final List cats;
 
   @override
@@ -54,7 +54,7 @@ class CategoriesScreen extends StatelessWidget {
                       context,
                       CategoryProducts(
                         id: cats[index].id,
-                        category: cats[index].category,
+                        category: cats[index].category, carCatId: carCategoryId,
                       ),
                     );
                   },

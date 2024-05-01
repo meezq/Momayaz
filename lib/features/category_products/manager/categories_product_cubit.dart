@@ -11,16 +11,17 @@ class CategoriesProductCubit extends Cubit<CategoriesProductState> {
   List<ProductModel> productModel = [];
   final firestore = FirebaseFirestore.instance;
 
-  void getProducts({required String id}) {
+  void getProducts({required String id,required String carsCategoryId}) {
     emit(CategoriesProductLoading());
     firestore
         .collection("categories")
         .doc(id)
-        .collection(id)
+        .collection(id).where("carCategoryId", isEqualTo: carsCategoryId)
         .snapshots()
         .listen((value) {
       safePrint("message");
       productModel.clear();
+
       for (var document in value.docs) {
         final category = ProductModel.fromMap(document.id,document.data());
         productModel.add(category);

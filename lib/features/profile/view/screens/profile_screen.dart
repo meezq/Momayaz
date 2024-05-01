@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
                   body: 'All of your favourite ads',
                   icon: Icons.favorite_outline,
                   onTap: () {
-                    push(context, const FavScreen());
+                    push(context, const MyFavScreen());
                   },
                 ),
                 Container(

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -20,6 +22,9 @@ class AppButton extends StatelessWidget {
   EdgeInsetsGeometry? margin;
   EdgeInsetsGeometry? padding;
   final Color? bgColor;
+ 
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -50,4 +55,9 @@ class AppButton extends StatelessWidget {
       ),
     );
   }
+
+  likeButton(
+      {required int Size,
+      required Null Function(bool isliked) likedBuiler,
+      required Icon Function(bool isLiked) likedBuilder}) {}
 }
