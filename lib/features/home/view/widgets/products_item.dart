@@ -42,7 +42,7 @@ class _ProductsItemState extends State<ProductsItem> {
                 onTap: () {},
                 child: Text(
                   "see all",
-                  style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp),
+                  style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp,),
                 ),
               ),
               SizedBox(
