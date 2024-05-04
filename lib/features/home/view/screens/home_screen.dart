@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context, state) => cubit.rent.isEmpty
                           ? const SizedBox()
                           : const ProductsItem(
-                              title: 'Cars For Rent',
+                              title: 'New Cars',
                             ),
                     ),
                   ],
