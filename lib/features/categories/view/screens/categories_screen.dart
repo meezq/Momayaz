@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.cats, required this.carCategoryId});
-final String carCategoryId;
+  const CategoriesScreen(
+      {super.key, required this.cats, required this.carCategoryId});
+
+  final String carCategoryId;
   final List cats;
 
   @override
@@ -26,13 +28,14 @@ final String carCategoryId;
             child: Row(
               children: [
                 IconButton(
-                    onPressed: () {
-                      pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColors.offWhite,
-                    )),
+                  onPressed: () {
+                    pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: AppColors.offWhite,
+                  ),
+                ),
                 Text(
                   "Categories",
                   style: TextStyle(
@@ -54,7 +57,8 @@ final String carCategoryId;
                       context,
                       CategoryProducts(
                         id: cats[index].id,
-                        category: cats[index].category, carCatId: carCategoryId,
+                        category: cats[index].category,
+                        carCatId: carCategoryId,
                       ),
                     );
                   },

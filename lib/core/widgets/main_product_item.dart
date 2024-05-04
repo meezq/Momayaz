@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
@@ -68,14 +67,16 @@ class MainProductItem extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            price,
-                            style: TextStyle(
-                              color: AppColors.offWhite,
-                              fontSize: 17.sp,
+                          Expanded(
+                            child: Text(
+                              price,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: AppColors.offWhite,
+                                fontSize: 17.sp,
+                              ),
                             ),
                           ),
-                          const Spacer(),
                           InkWell(
                             onTap: () {
                               //isFav = !isFav;

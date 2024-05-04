@@ -15,12 +15,13 @@ class HomeSlider extends StatelessWidget {
         return CarouselSlider(
           items: BlocProvider.of<HomeCubit>(context).ads.map((e) {
             return Card(
-              shape: const RoundedRectangleBorder(),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.sp)),
               child: Align(
                 alignment: Alignment.center,
                 child: InkWell(
-                  onTap: () => BlocProvider.of<HomeCubit>(context)
-                      .appLaunchUrl(Uri.parse(e.url)),
+                  onTap: () => BlocProvider.of<HomeCubit>(context).appLaunchUrl(
+                    Uri.parse(e.url),
+                  ),
                   child: Image.network(
                     e.image,
                     width: double.infinity,

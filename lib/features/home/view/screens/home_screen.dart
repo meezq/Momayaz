@@ -71,5 +71,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   likeButton(
-      {required int Size, required Icon Function(bool isLiked) likedBuilder}) {}
+      {required int size, required Icon Function(bool isLiked) likedBuilder}) {}
 }
