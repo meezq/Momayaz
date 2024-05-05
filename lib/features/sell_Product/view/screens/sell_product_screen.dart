@@ -62,9 +62,9 @@ class SellProductScreen extends StatelessWidget {
                           icon: cubit.cats[index].image,
                           title: cubit.cats[index].category,
                           onTap: () {
-                            if (cubit.cats[index].category == "3" ||
-                                cubit.cats[index].category == "4" ||
-                                cubit.cats[index].category == "9") {
+                            if (index == 3 ||
+                                index == 2||
+                                index== 8) {
                               push(
                                   context,
                                   SoldProductDetailsScreen(
@@ -72,6 +72,9 @@ class SellProductScreen extends StatelessWidget {
                                           categoryImage:  cubit.cats[index].image,
                                           categoryName:  cubit.cats[index].category,
                                           categoryId:  cubit.cats[index].id,
+                                          carCategoryId: 'service',
+                                          carCategoryImage: 'https://firebasestorage.googleapis.com/v0/b/momayaz-e90a5.appspot.com/o/assets%2Fimages%2Fcategories%2Fcar_service_category.png?alt=media&token=3e2d4def-313c-4a61-a81d-6edcba0f252b',
+                                          carCategoryName: "Cars' Services",
                                       )));
                             } else {
                               push(context, CarsScreen(

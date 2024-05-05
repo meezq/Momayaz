@@ -7,11 +7,11 @@ part 'cars_category_state.dart';
 
 class CarsCategoryCubit extends Cubit<CarsCategoryState> {
   CarsCategoryCubit() : super(CarsCategoryInitial());
-  FirebaseFirestore firebaseFirestore =FirebaseFirestore.instance;
+  FirebaseFirestore firebase =FirebaseFirestore.instance;
   List<CarModel> cars = [];
   getCars(){
     emit(CarsCategoryLoading());
-    firebaseFirestore.collection("cars").get().then((value) {
+    firebase.collection("cars").get().then((value) {
       cars.clear();
       for(var doc in value.docs){
         final category = CarModel.fromMap(doc.data());

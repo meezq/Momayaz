@@ -14,9 +14,9 @@ class MainSoldDetailsItem extends StatelessWidget {
       {super.key,
       required this.image,
       required this.id,
-      required this.category});
+      required this.category, required this.sCat, required this.sImage, required this.sId});
 
-  final String image, id, category;
+  final String image, id, category,sCat,sImage,sId;
   final cubit = CitiesCubit();
 
   @override
@@ -27,37 +27,75 @@ class MainSoldDetailsItem extends StatelessWidget {
         builder: (context, state) {
           return Column(
             children: [
-              Container(
-                margin: EdgeInsets.all(15.sp),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Category *",
-                      style: TextStyle(
-                          color: AppColors.offWhite,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Row(
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(15.sp),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MainCategoryItem(
-                          icon: image,
-                        ),
-                        SizedBox(
-                          width: 2.w,
-                        ),
                         Text(
-                          category,
+                          "Category *",
                           style: TextStyle(
-                              color: Colors.grey[800],
-                              fontSize: 20.sp,
+                              color: AppColors.offWhite,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold),
+                        ),
+                        Column(
+                          children: [
+                            MainCategoryItem(
+                              icon: image,
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Text(
+                              category,
+                              style: TextStyle(
+                                  color: Colors.grey[800],
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(15.sp),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Sub Category *",
+                          style: TextStyle(
+                              color: AppColors.offWhite,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Column(
+                          children: [
+                            MainCategoryItem(
+                              icon: sImage,
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Text(
+                              sCat,
+                              style: TextStyle(
+                                  color: Colors.grey[800],
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Container(
                 margin: EdgeInsets.all(15.sp),

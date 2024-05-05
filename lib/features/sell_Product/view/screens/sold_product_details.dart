@@ -244,18 +244,22 @@ class _SoldProductDetailsScreenState extends State<SoldProductDetailsScreen> {
                         image: widget.category.categoryImage,
                         id: widget.category.categoryId,
                         category: widget.category.categoryName,
+                        sCat: widget.category.carCategoryName,
+                        sImage: widget.category.carCategoryImage,
+                        sId: widget.category.carCategoryId,
+
                       ),
                       widget.category.categoryId == '1'
                           ? const VehiclesSellItem()
                           : widget.category.categoryId == '2'
-                              ? const PropertySoldItem()
+                              ? const SparePartSellItem()
                               : widget.category.categoryId == "3"
-                                  ? const MobileSellItem()
+                                  ? const CarServiceSellItem()
                                   : widget.category.categoryId == "4"
-                                      ? const AppliancesFashionSell()
+                                      ? const ShippingSellItem()
                                       : widget.category.categoryId== "5"
-                                          ? const AppliancesFashionSell()
-                                          : const AppliancesFashionSell()
+                                          ? const ShippingSellItem()
+                                          : const ShippingSellItem()
                     ],
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/categories_item.dart';
+import 'package:momayaz/features/cars/view/cars_screen.dart';
 import 'package:momayaz/features/category_products/view/screens/category_products.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -52,16 +53,19 @@ class CategoriesScreen extends StatelessWidget {
                 return CategoriesItem(
                   icon: cats[index].image,
                   title: cats[index].category,
-                  onTap: () {
-                    push(
-                      context,
-                      CategoryProducts(
-                        id: cats[index].id,
-                        category: cats[index].category,
-                        carCatId: carCategoryId,
-                      ),
-                    );
-                  },
+                  onTap: () {if (index == 2||index ==3 ||index ==8){
+                    push(context,CategoryProducts(
+                      id: cats[index].id,
+                      category: cats[index].category,
+                      carCatId: 'service',
+
+                    ));
+                  }
+                  else{
+                    push(context, CarsScreen(id:  cats[index].id,
+                      productCategory:  cats[index].category,
+                    ));
+                  }},
                 );
               },
               itemCount: cats.length,

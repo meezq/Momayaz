@@ -6,7 +6,7 @@ import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:momayaz/core/models/product_model.dart';
-import 'package:momayaz/core/models/fav_model.dart';
+import 'package:momayaz/features/favourites/model/fav_model.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:momayaz/features/category_products/view/screens/category_products.dart';
 
@@ -17,7 +17,7 @@ String userId = MyShared.getString(key: MySharedKeys.userid);
 
 class MyFavCubit extends Cubit<MyFavState> {
   MyFavCubit() : super(MyFavInitial());
-  List<FavProductModel> fproducts = [];
+  List<FavModel> fproducts = [];
   List<ProductModel> products= [];
 
   void getFav() {
@@ -31,11 +31,11 @@ class MyFavCubit extends Cubit<MyFavState> {
       fproducts.clear();
       int i = 0;
       for (var document in value.docs) {
-        fproducts.add(FavProductModel.fromMap(document.id, document.data()));
+        fproducts.add(FavModel.fromMap(document.id, document.data()));
         firestore.collection('categories')
-          .doc(fproducts[i].categoryId)
-          .collection(fproducts[i].categoryId)
-          .doc(fproducts[i].productId)
+          .doc(fproducts[i].category)
+          .collection(fproducts[i].category)
+          .doc(fproducts[i].id)
           .snapshots()
           .listen((value) {
           safePrint("message");

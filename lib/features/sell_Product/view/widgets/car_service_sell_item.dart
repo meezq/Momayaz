@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class MobileSellItem extends StatelessWidget {
-  const MobileSellItem({
+class CarServiceSellItem extends StatelessWidget {
+  const CarServiceSellItem({
     super.key,
   });
 

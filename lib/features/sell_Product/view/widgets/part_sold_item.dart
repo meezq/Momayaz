@@ -7,16 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class PropertySoldItem extends StatefulWidget {
-  const PropertySoldItem({
+class SparePartSellItem extends StatefulWidget {
+  const SparePartSellItem({
     super.key,
   });
 
   @override
-  State<PropertySoldItem> createState() => _PropertySoldItemState();
+  State<SparePartSellItem> createState() => _SparePartSellItemState();
 }
 
-class _PropertySoldItemState extends State<PropertySoldItem> {
+class _SparePartSellItemState extends State<SparePartSellItem> {
   @override
   Widget build(BuildContext context) {
     return Container(

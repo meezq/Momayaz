@@ -72,9 +72,19 @@ class HomeCategoriesWidgets extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                    push(context, CarsScreen(id:  cats[index].id,
-                    productCategory:  cats[index].category,
-                    ));
+                    if (index == 2||index ==3||index ==8){
+                      push(context,CategoryProducts(
+                        id: cats[index].id,
+                        category: cats[index].category,
+                        carCatId: 'service',
+
+                      ));
+                    }
+                    else{
+                      push(context, CarsScreen(id:  cats[index].id,
+                      productCategory:  cats[index].category,
+                      ));
+                    }
                     },
                     child: Column(
                       children: [
