@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
       create: (context) => cubit,
       child: Container(
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context, state) => cubit.rent.isEmpty
                           ? const SizedBox()
                           : const ProductsItem(
-                              title: 'Cars For Rent',
+                              title: 'New Cars',
                             ),
                     ),
                   ],
@@ -68,4 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  likeButton(
+      {required int size, required Icon Function(bool isLiked) likedBuilder}) {}
 }

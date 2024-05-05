@@ -5,7 +5,7 @@ import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
-import 'package:momayaz/features/favourites/add_favourite.dart';
+import 'package:momayaz/features/favourites/manager/add_favourite.dart';
 import 'package:momayaz/features/home/manager/home_cubit.dart';
 import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -42,7 +42,7 @@ class _ProductsItemState extends State<ProductsItem> {
                 onTap: () {},
                 child: Text(
                   "see all",
-                  style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp),
+                  style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp,),
                 ),
               ),
               SizedBox(

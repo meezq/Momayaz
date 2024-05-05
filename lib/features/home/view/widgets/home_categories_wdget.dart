@@ -1,6 +1,7 @@
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/main_category_item.dart';
+import 'package:momayaz/features/cars/view/cars_screen.dart';
 import 'package:momayaz/features/categories/view/screens/categories_screen.dart';
 import 'package:momayaz/features/category_products/view/screens/category_products.dart';
 import 'package:momayaz/features/home/manager/home_cubit.dart';
@@ -38,7 +39,7 @@ class HomeCategoriesWidgets extends StatelessWidget {
                   push(
                     context,
                     CategoriesScreen(
-                      cats: cats,
+                      cats: cats, carCategoryId: '',
                     ),
                   );
                 },
@@ -65,18 +66,15 @@ class HomeCategoriesWidgets extends StatelessWidget {
           height: 13.h,
           child: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
+
               return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      push(
-                        context,
-                        CategoryProducts(
-                          id: cats[index].id,
-                          category: cats[index].category,
-                        ),
-                      );
+                    push(context, CarsScreen(id:  cats[index].id,
+                    productCategory:  cats[index].category,
+                    ));
                     },
                     child: Column(
                       children: [

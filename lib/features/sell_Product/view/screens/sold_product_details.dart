@@ -8,6 +8,7 @@ import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:momayaz/core/utils/snack_bar.dart';
 import 'package:momayaz/core/widgets/app_button.dart';
 import 'package:momayaz/core/widgets/congrats_screen.dart';
+import 'package:momayaz/features/sell_Product/category.dart';
 import 'package:momayaz/features/sell_Product/manager/sell_product__cubit.dart';
 import 'package:momayaz/features/sell_Product/model/shipping_model.dart';
 import 'package:momayaz/features/sell_Product/model/car_service_model.dart';
@@ -27,20 +28,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 // ignore: must_be_immutable
-class SoldProductDetails extends StatefulWidget {
-  const SoldProductDetails(
-      {super.key,
-      required this.image,
-      required this.id,
-      required this.category});
-
-  final String image, id, category;
+class SoldProductDetailsScreen extends StatefulWidget {
+  const SoldProductDetailsScreen(
+      {super.key, required this.category,
+      });
+final Category category;
 
   @override
-  State<SoldProductDetails> createState() => _SoldProductDetailsState();
+  State<SoldProductDetailsScreen> createState() => _SoldProductDetailsScreenState();
 }
 
-class _SoldProductDetailsState extends State<SoldProductDetails> {
+class _SoldProductDetailsScreenState extends State<SoldProductDetailsScreen> {
   List<String> downloadUrls = [];
   List<XFile> imageFileList = [];
   final cubit = SellProductCubit();
@@ -114,7 +112,7 @@ class _SoldProductDetailsState extends State<SoldProductDetails> {
                         DateTime currentDate = DateTime.now();
 
                         cubit.sellProduct(
-                          catId: widget.id,
+                          catId: widget.category.categoryId,
                           vehiclesModel: VehiclesModel(
                             context
                                 .read<SellProductCubit>()
@@ -138,7 +136,7 @@ class _SoldProductDetailsState extends State<SoldProductDetails> {
                                   .read<SellProductCubit>()
                                   .titleEditingController
                                   .text,
-                              widget.category,
+                              widget.category.categoryName,
                               context
                                   .read<SellProductCubit>()
                                   .priceEditingController
@@ -160,7 +158,7 @@ class _SoldProductDetailsState extends State<SoldProductDetails> {
                                 key: MySharedKeys.username,
                               ),
                               MyShared.getString(key: MySharedKeys.userImage),
-                              widget.id,
+                              widget.category.categoryId,
                               currentDate.toString()),
                           propertyModel: PartModel(
                             context
@@ -185,7 +183,7 @@ class _SoldProductDetailsState extends State<SoldProductDetails> {
                                 .read<SellProductCubit>()
                                 .shippingTypeEditingController
                                 .text,
-                          ),
+                          ), carCategoryImage: widget.category.carCategoryImage, carCategoryId: widget.category.carCategoryId, carCategoryName: widget.category.carCategoryId,
                         );
                       });
                     } else {
@@ -243,19 +241,19 @@ class _SoldProductDetailsState extends State<SoldProductDetails> {
                         imageFileList: imageFileList,
                       ),
                       MainSoldDetailsItem(
-                        image: widget.image,
-                        id: widget.id,
-                        category: widget.category,
+                        image: widget.category.categoryImage,
+                        id: widget.category.categoryId,
+                        category: widget.category.categoryName,
                       ),
-                      widget.id == '1'
+                      widget.category.categoryId == '1'
                           ? const VehiclesSellItem()
-                          : widget.id == '2'
+                          : widget.category.categoryId == '2'
                               ? const PropertySoldItem()
-                              : widget.id == "3"
+                              : widget.category.categoryId == "3"
                                   ? const MobileSellItem()
-                                  : widget.id == "4"
+                                  : widget.category.categoryId == "4"
                                       ? const AppliancesFashionSell()
-                                      : widget.id == "5"
+                                      : widget.category.categoryId== "5"
                                           ? const AppliancesFashionSell()
                                           : const AppliancesFashionSell()
                     ],

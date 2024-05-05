@@ -8,11 +8,11 @@ class CategoriesItem extends StatelessWidget {
       {super.key,
       required this.icon,
       required this.title,
-      required this.onTap});
+       this.onTap = null});
 
   final String icon;
   final String title;
-  final VoidCallback onTap;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:momayaz/features/favourites/add_favourite.dart';
+import 'package:momayaz/features/favourites/manager/add_favourite.dart';
 
 class MainProductItem extends StatelessWidget {
   const MainProductItem({
@@ -68,14 +67,16 @@ class MainProductItem extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            price,
-                            style: TextStyle(
-                              color: AppColors.offWhite,
-                              fontSize: 17.sp,
+                          Expanded(
+                            child: Text(
+                              price,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: AppColors.offWhite,
+                                fontSize: 17.sp,
+                              ),
                             ),
                           ),
-                          const Spacer(),
                           InkWell(
                             onTap: () {
                               //isFav = !isFav;

@@ -1,57 +1,42 @@
+import 'package:momayaz/core/models/product_model.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/product_details/manager/product_details_cubit.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:momayaz/features/favourites/add_favourite.dart';
+import 'package:momayaz/features/favourites/manager/add_favourite.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+//import category_products.dart
+import 'package:momayaz/features/category_products/view/screens/category_products.dart';
 
-class FavScreen extends StatefulWidget {
-  const FavScreen({super.key});
+class MyFavScreen extends StatefulWidget {
+  const MyFavScreen({super.key});
 
   @override
-  State<FavScreen> createState() => _FavScreenState();
+  State<MyFavScreen> createState() => _MyFavScreenState();
 }
 
-class _FavScreenState extends State<FavScreen> {
-  List<MainProductItem> products = [
-    MainProductItem(
-      price: 'EGP 9,000,000',
-      title: 'Mercedes AMG GT 63',
-      date: '1 month ago.',
-      city: 'Cairo',
-      isFav: true,
-      image: 'https://i.ibb.co/LdYMkFJ/pexels-mike-bird-112460.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-    MainProductItem(
-      price: 'EGP 5,000,000',
-      title: 'Jeep Grand Cherokee',
-      date: '3 month ago.',
-      city: 'Giza',
-      isFav: true,
-      image: 'https://i.ibb.co/SP6wv5D/pexels-aaron-curtis-119435.jpg',
-      onFavTap: () {},
-      productId: '',
-      catId: '',
-    ),
-  ];
+class _MyFavScreenState extends State<MyFavScreen> {
+  final cubit = MyFavCubit();
+
+  @override
+  void initState() {
+    super.initState();
+    cubit.getFav();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: AppColors.offWhite),
-        backgroundColor: AppColors.second,
-      ),
-      backgroundColor: AppColors.second,
-      body: Column(
+   
+    return BlocProvider(
+      create: (context) => cubit,
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.all(13.sp),
             child: Text(
-              "Favourites",
+              "My Favourites",
               style: TextStyle(
                   color: AppColors.offWhite,
                   fontSize: 18.sp,
@@ -59,11 +44,25 @@ class _FavScreenState extends State<FavScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return products[index];
+            child: BlocBuilder<MyFavCubit, MyFavState>(
+              builder: (context, state) {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return MainProductItem(
+                      price: cubit.products[index].price,
+                      title: cubit.products[index].title,
+                      date: cubit.products[index].date,
+                      city: cubit.products[index].location,
+                      isFav: false,
+                      image: cubit.products[index].images[0],
+                      onFavTap: () {},
+                      productId: cubit.products[index].productId,
+                      catId: cubit.products[index].categoryId,
+                    );
+                  },
+                  itemCount: cubit.products.length,
+                );
               },
-              itemCount: products.length,
             ),
           ),
         ],
