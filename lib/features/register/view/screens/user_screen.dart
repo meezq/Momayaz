@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:momayaz/core/shared/my_shared.dart';
 import 'package:momayaz/core/shared/my_shared_keys.dart';
 import 'package:momayaz/core/styles/colors.dart';
@@ -33,8 +37,12 @@ class _UserScreenState extends State<UserScreen> {
 
   final TextEditingController mobileEditingController = TextEditingController();
 
+
   final firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final storage = FirebaseStorage.instance;
+  String imageUrl = '';
+  bool loading = false;
 
   final cubit = RegisterCubit();
   final _formKey = GlobalKey<FormState>();
@@ -70,6 +78,33 @@ class _UserScreenState extends State<UserScreen> {
                           SizedBox(
                             height: 2.h,
                           ),
+                        if(imageUrl.isEmpty)
+                          InkWell(
+                          onTap: ()=>pickImage(),
+
+                          child: const CircleAvatar(
+                            radius: 30,
+                            child: Icon(Icons.person,size: 45),
+                          )
+                          )
+                        else
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                          InkWell(
+                          onTap: ()=>pickImage(),
+                          child:  CircleAvatar(
+                            radius: 30,
+                            backgroundImage: NetworkImage(imageUrl),
+                            ),
+                            ),
+                          visibility(
+                              visible: loading,
+                              child: const CircularProgressIndicator(),
+                          )
+                            ],
+                          ),
+                          const SizedBox(height: 15),
                           AppTextField(
                               hint: "Your Name",
                               keyboardType: TextInputType.name,
@@ -177,5 +212,67 @@ class _UserScreenState extends State<UserScreen> {
     nameEditingController.text = map['name'];
     mobileEditingController.text = map['phone'];
     emailEditingController.text = map['email'];
+
+    setState(() {
+      imageUrl = map['imageUrl'];
+    });
   }
+
+  void pickImage() async{
+    final ImagePicker picker = ImagePicker();
+// Pick an image.
+    final XFile? file = await picker.pickImage(
+        source: ImageSource.gallery);
+    final image = File(file!.path);
+
+    uploadImage(image);
+  }
+
+  void uploadImage(File image){
+    setState(() {
+      loading = true;
+    });
+    final userId = auth.currentUser!.uid;
+    storage.ref('profileImage/$userId').putFile(image)
+        .then((value){
+          print('uploadImage => SUCCESS');
+          print('imageUrl => SUCCESS');
+  })
+        .catchError((error){
+      setState(() {
+        loading = false;
+      });
+          print('uploadImage => $error');
+    });
+    }
+
+
+
+
+  void getImage(){
+    final userId = auth.currentUser!.uid;
+    storage.ref('profileImage/$userId')
+    .getDownloadURL()
+        .then((imageUrl){
+          print(imageUrl);
+          setState(() {
+            this.imageUrl = imageUrl;
+            loading = false;
+          });
+
+          saveImageUrl(imageUrl);
+    })
+        .catchError((error){});
+
+  }
+
+  void saveImageUrl(String imageUrl){
+    final userId = auth.currentUser!.uid;
+
+    firestore.collection('users').doc(userId).update({'imageUrl' : imageUrl, });
+
+  }
+
+  visibility({required bool visible, required CircularProgressIndicator child}) {}
+
 }

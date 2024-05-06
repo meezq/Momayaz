@@ -12,8 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class RegisterScreen extends StatelessWidget {
+
   RegisterScreen({super.key});
-  
+
   final TextEditingController nameEditingController = TextEditingController();
 
   final TextEditingController emailEditingController = TextEditingController();
@@ -23,6 +24,8 @@ class RegisterScreen extends StatelessWidget {
   final TextEditingController passEditingController = TextEditingController();
 
   final TextEditingController rePassEditingController = TextEditingController();
+
+
 
   final cubit = RegisterCubit();
   final _formKey = GlobalKey<FormState>();
@@ -73,6 +76,7 @@ class RegisterScreen extends StatelessWidget {
                                     return "This field is Required";
                                   }
                                   return null;
+
                                 },
                                 hint: "Mohamed Salah",
                                 keyboardType: TextInputType.name,
