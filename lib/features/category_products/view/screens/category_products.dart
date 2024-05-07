@@ -1,5 +1,6 @@
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/widgets/app_text_field.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:momayaz/features/category_products/manager/categories_product_cubit.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class CategoryProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..getProducts(id: id, carsCategoryId: carCatId),
+      create: (context) => cubit..getProducts(id: id, carsCategoryId: carCatId)..likes(id: category, productId: id),
       child: BlocBuilder<CategoriesProductCubit, CategoriesProductState>(
         builder: (context, state) {
           return Scaffold(
@@ -52,6 +53,9 @@ class CategoryProducts extends StatelessWidget {
                     ],
                   ),
                 ),
+
+
+
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
@@ -60,9 +64,13 @@ class CategoryProducts extends StatelessWidget {
                         title: cubit.productModel[index].title,
                         date: cubit.productModel[index].date.substring(0, 10),
                         city: cubit.productModel[index].location,
-                        isFav: true,
+                        isFav:  cubit.productModel[index].isLiked ,
                         image: cubit.productModel[index].images[0],
-                        onFavTap: () {},
+                        onFavTap: () {
+                          cubit.productModel[index].isLiked?
+                          cubit.removeFav(catId: id, productId: cubit.productModel[index].productId)
+                              : cubit.addFav(catId: id, productId: cubit.productModel[index].productId) ;
+                        },
                         productId: cubit.productModel[index].productId,
                         catId: id,
                       );

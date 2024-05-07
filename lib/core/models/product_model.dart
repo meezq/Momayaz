@@ -6,6 +6,7 @@ class ProductModel {
   String? _description;
   String? _location;
   String? _date;
+  bool? _isLiked;
 
   String get date => _date ?? "";
 
@@ -149,6 +150,12 @@ class ProductModel {
     _category = value;
   }
 
+  bool get isLiked => _isLiked ?? false;
+
+  set isLiked(bool value) {
+    _isLiked = value;
+  }
+
   ProductModel.fromMap(String id, Map<String, dynamic> map) {
     _categoryId = map['categoryId'];
     _title = map['title'];
@@ -194,6 +201,7 @@ class ProductModel {
     this._shippingType,
     this._carServiceType,
     this._partType,
+      this._isLiked,
   ) {
     _title = title;
   }

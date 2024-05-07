@@ -1,5 +1,6 @@
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
+import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:momayaz/features/chats/view/screens/chat_screen.dart';
 import 'package:momayaz/features/product_details/manager/product_details_cubit.dart';
@@ -11,18 +12,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   ProductDetailsScreen(
       {super.key, required this.productId, required this.catId});
 
   final String productId;
   final String catId;
+
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final cubit = ProductDetailsCubit();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..getProducts(id: catId, productId: productId),
+      create: (context) =>
+          cubit..getProducts(id: widget.catId, productId: widget.productId),
       child: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
         builder: (context, state) {
           if (state is ProductDetailsLoading) {
@@ -289,14 +302,39 @@ class ProductDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        const Icon(
-                          Icons.favorite_outline,
-                          color: AppColors.offWhite,
+                        InkWell(
+                          onTap: () {
+if(cubit.isLiked == true){
+  cubit.removeFav(catId: cubit.productModel.categoryId, productId: cubit.productModel.productId);
+  setState(() {
+
+
+  });
+}else{
+  cubit.addFav(
+      productId: cubit.productModel.productId,
+      catId: cubit.productModel.categoryId);
+  setState(() {
+
+  });
+}
+                          },
+                          child: Icon(
+                            cubit.isLiked == true
+                                ? Icons.favorite
+
+
+
+                                : Icons.favorite_outline,
+                            color: AppColors.offWhite,
+                          ),
                         ),
                       ],
                     ),
                   ),
+
                 ],
+
               ),
             );
           }

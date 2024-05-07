@@ -20,3 +20,12 @@ class HomeGetProductsFailure extends HomeState {}
 class HomeGetAdsSuccess extends HomeState {}
 
 class HomeGetAdsFailure extends HomeState {}
+
+
+class LikesLoading extends HomeState {}
+class LikesSuccess extends HomeState {}
+class LikesFailure extends HomeState {}
+
+class UpdateLikeLoading extends HomeState {}
+class UpdateLikeSuccess extends HomeState {}
+class AddLikeFailure extends HomeState {}

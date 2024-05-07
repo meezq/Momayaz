@@ -191,10 +191,11 @@ class _UserScreenState extends State<UserScreen> {
     firestore.collection("users").doc(userId).update({
       "name": nameEditingController.text,
       "phone": mobileEditingController.text,
+      "image": imageUrl,
     }).then((value) {
       safePrint("======> User data saved successfully.");
       MyShared.putString(
-          key: MySharedKeys.email, value: emailEditingController.text);
+          key: MySharedKeys.userImage, value: imageUrl);
       MyShared.putString(
           key: MySharedKeys.username, value: nameEditingController.text);
       MyShared.putString(
@@ -212,10 +213,11 @@ class _UserScreenState extends State<UserScreen> {
     nameEditingController.text = map['name'];
     mobileEditingController.text = map['phone'];
     emailEditingController.text = map['email'];
+    imageUrl = map['image'];
 
-    setState(() {
-      imageUrl = map['imageUrl'];
-    });
+    // setState(() {
+    //   imageUrl = map['imageUrl'];
+    // });
   }
 
   void pickImage() async{
@@ -235,14 +237,15 @@ class _UserScreenState extends State<UserScreen> {
     final userId = auth.currentUser!.uid;
     storage.ref('profileImage/$userId').putFile(image)
         .then((value){
-          print('uploadImage => SUCCESS');
-          print('imageUrl => SUCCESS');
+          safePrint('uploadImage => SUCCESS');
+          getImage();
+          safePrint('imageUrl get => SUCCESS');
   })
         .catchError((error){
       setState(() {
         loading = false;
       });
-          print('uploadImage => $error');
+          safePrint('uploadImage => $error');
     });
     }
 
@@ -254,23 +257,26 @@ class _UserScreenState extends State<UserScreen> {
     storage.ref('profileImage/$userId')
     .getDownloadURL()
         .then((imageUrl){
-          print(imageUrl);
+          safePrint('getImage=> SUCCESS');
+          safePrint(imageUrl);
           setState(() {
             this.imageUrl = imageUrl;
             loading = false;
           });
 
-          saveImageUrl(imageUrl);
+         // saveImageUrl(imageUrl);
     })
-        .catchError((error){});
+        .catchError((error){
+          safePrint('Get Image error===> $error');
+    });
 
   }
 
   void saveImageUrl(String imageUrl){
     final userId = auth.currentUser!.uid;
 
-    firestore.collection('users').doc(userId).update({'imageUrl' : imageUrl, });
-
+    firestore.collection('users').doc(userId).update({'image' : imageUrl, });
+    safePrint('saveImageUrl => SUCCESS');
   }
 
   visibility({required bool visible, required CircularProgressIndicator child}) {}

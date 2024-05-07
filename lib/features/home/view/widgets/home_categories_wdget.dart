@@ -47,7 +47,7 @@ class HomeCategoriesWidgets extends StatelessWidget {
                   "see all",
                   style: TextStyle(
                     color: AppColors.offWhite,
-                    fontSize: 15.sp,
+                    fontSize: 17.sp,
                   ),
                 ),
               ),
@@ -63,11 +63,12 @@ class HomeCategoriesWidgets extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 13.h,
+          height: 15.h,
           child: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
 
               return ListView.builder(
+                //padding: const EdgeInsets.fromLTRB(8, 2, 8, 2) ,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return InkWell(
@@ -86,17 +87,21 @@ class HomeCategoriesWidgets extends StatelessWidget {
                       ));
                     }
                     },
-                    child: Column(
-                      children: [
-                        MainCategoryItem(icon: cats[index].image),
-                        Text(
-                          cats[index].category,
-                          style: TextStyle(
-                            color: AppColors.offWhite,
-                            fontSize: 14.sp,
-                          ),
-                        )
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0,2,8,2),
+                      child: Column(
+                        children: [
+                          MainCategoryItem(icon: cats[index].image),
+                          Text(
+                            cats[index].category,
+                            style: TextStyle(
+                              color: AppColors.offWhite,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },

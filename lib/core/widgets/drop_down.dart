@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DropDownTextFormField extends StatefulWidget {
-  DropDownTextFormField({Key? key,  required this.hint, this.validators, required this.controller, required this.enabled, required this.dropDownList,  this.count = 0, this.onChanged}) : super(key: key);
+  DropDownTextFormField({super.key,  required this.hint, this.validators, required this.controller, required this.enabled, required this.dropDownList,  this.count = 0, this.onChanged});
   final String hint;
   final FormFieldValidator<dynamic>? validators;
   final SingleValueDropDownController  controller;

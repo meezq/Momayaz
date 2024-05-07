@@ -32,6 +32,13 @@ class _MainScreenState extends State<MainScreen> {
       child: BlocBuilder<MainCubit, MainState>(
         builder: (context, state) {
           return Scaffold(
+            drawer: Drawer(
+              child: Column(
+                children: [
+
+                ],
+              ),
+            ),
               backgroundColor: AppColors.second,
               body: SafeArea(
                 child: Column(

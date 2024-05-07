@@ -25,11 +25,15 @@ class CategoriesItem extends StatelessWidget {
             MainCategoryItem(
               icon: icon,
             ),
-            Text(
-              title,
-              style: TextStyle(
-                color: AppColors.offWhite,
-                fontSize: 18.sp,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: AppColors.offWhite,
+                  fontSize: 20.sp,
+                  //fontWeight: FontWeight.bold
+                ),
               ),
             ),
             const Spacer(),

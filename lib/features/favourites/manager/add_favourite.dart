@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:momayaz/core/shared/my_shared.dart';
 import 'package:momayaz/core/shared/my_shared_keys.dart';
@@ -8,8 +9,6 @@ import 'package:meta/meta.dart';
 import 'package:momayaz/core/models/product_model.dart';
 import 'package:momayaz/features/favourites/model/fav_model.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
-import 'package:momayaz/features/category_products/view/screens/category_products.dart';
-
 part 'my_fav_state.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -17,7 +16,8 @@ String userId = MyShared.getString(key: MySharedKeys.userid);
 
 class MyFavCubit extends Cubit<MyFavState> {
   MyFavCubit() : super(MyFavInitial());
-  List<FavModel> fproducts = [];
+  List<FavModel> fProducts = [];
+
   List<ProductModel> products= [];
 
   void getFav() {
@@ -28,72 +28,73 @@ class MyFavCubit extends Cubit<MyFavState> {
         .collection('fav')
         .get()
         .then((value) {
-      fproducts.clear();
-      int i = 0;
+      fProducts.clear();
+      products.clear();
       for (var document in value.docs) {
-        fproducts.add(FavModel.fromMap(document.id, document.data()));
-        firestore.collection('categories')
-          .doc(fproducts[i].category)
-          .collection(fproducts[i].category)
-          .doc(fproducts[i].id)
-          .snapshots()
-          .listen((value) {
+        fProducts.add(FavModel.fromMap( document.data()));
+        // firestore.collection('categories')
+        //   .doc(fProducts[i].category)
+        //   .collection(fProducts[i].category)
+        //   .doc(fProducts[i].id)
+        //   .snapshots()
+        //   .listen((value) {
+
+         // products.add(ProductModel.fromMap(value.id, value.data()!));
+
+        safePrint("${document['id']}++${document['category']}");
+
+        firestore.collection("categories").doc(document['category']).collection(document['category']).doc(document['id']).get().then((value) {
+
           safePrint("message");
-          products.add(ProductModel.fromMap(value.id, value.data()!));
-          safePrint(products.length);
-           emit(MyFavSuccess());
+          products.add(ProductModel.fromMap(document.id, value.data()!));
+          safePrint("=========> products${products.length}");
+
+          emit(MyFavSuccess());
+
+        }).catchError((onError){
+          safePrint(onError.toString());
         });
-          i++;
+        }
+
+
+
+      safePrint(fProducts[0]);
+
+      safePrint("===>"+fProducts.length.toString());
+        //  i++;
       }
       
-              
 
-    }).catchError((error) {
-      emit(MyFavFailure());
-      safePrint("=========7======>$error");
-    });
+
+    );
   }
-}
 
-void addFav({
-  required String catId,
-  required String id,
-}) {
-  firestore
-      .collection("categories")
-      .doc(catId)
-      .collection(catId)
-      .doc(id)
-      .collection("likes")
-      .doc(userId)
-      .set({
-    "liked_by": userId,
-    "liked_on": FieldValue.serverTimestamp(), // to record the time of the like
-  });
-  firestore
-      .collection("categories")
-      .doc(catId)
-      .collection(catId)
-      .doc(id)
-      .get()
-      .then((value) {
-    firestore.collection("users").doc(userId).collection("fav").doc(id).set({
-      "id": id,
-      "category": catId,
+
+
+
+
+  void removeFav({required String catId,required String productId,required int index}){
+    emit(RemoveFavLoading());
+    firestore
+        .collection('users')
+        .doc(userId)
+        .collection('fav')
+        .doc(productId).delete().then((value) {
+          products.removeAt(index);
+          firestore.collection('categories').doc(catId).collection(catId).doc(productId).collection("likes")
+          .doc(userId).delete().then((value) {
+
+          });
+          emit(RemoveFavSuccess());
+
+          safePrint("removed");
+    }).catchError((onError){
+      safePrint(onError.toString());
     });
-  });
+
+  }
+
+
+
 }
 
-Future<bool> isLiked(String catId, String id) async {
-  // Attempt to fetch the document
-  DocumentSnapshot snapshot = await firestore
-      .collection("categories")
-      .doc(catId)
-      .collection(catId)
-      .doc(id)
-      .collection("likes")
-      .doc(userId)
-      .get();
-  // Return true if the document exists, false otherwise
-  return snapshot.exists;
-}

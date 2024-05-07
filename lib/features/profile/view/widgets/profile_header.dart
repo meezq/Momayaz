@@ -16,13 +16,24 @@ class ProfileHeader extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: AppColors.primary,
-            radius: 25.sp,
-            child: Text(
-              name.substring(0, 1).toUpperCase(),
-              style: TextStyle(color: AppColors.offWhite, fontSize: 28.sp),
-            ),
+            radius: 30,
+            foregroundImage: NetworkImage(MyShared.getString(key: MySharedKeys.userImage)),
+              child:Text(
+                    name.substring(0, 1).toUpperCase(),
+                    style: TextStyle(color: AppColors.offWhite, fontSize: 28.sp),
+
+                  ),
           ),
+          // if(MySharedKeys.userImage=="")
+          //   {CircleAvatar(
+          //     backgroundColor: AppColors.primary,
+          //     radius: 25.sp,
+          //     child:Text(
+          //       name.substring(0, 1).toUpperCase(),
+          //       style: TextStyle(color: AppColors.offWhite, fontSize: 28.sp),
+          //     ),)
+          //   };
+          // else{ };
           SizedBox(
             width: 5.w,
           ),

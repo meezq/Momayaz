@@ -4,6 +4,7 @@ import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/features/cities/view/screens/cities_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/search/view/search_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -17,6 +18,7 @@ class HomeAppBar extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Text(
               'momayaz',
               style: TextStyle(
@@ -69,29 +71,35 @@ class HomeAppBar extends StatelessWidget {
             )
           ],
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(13.sp),
-            border: Border.all(color: AppColors.offWhite),
-          ),
-          padding: EdgeInsets.all(18.sp),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.search,
-                color: AppColors.offWhite,
-              ),
-              SizedBox(
-                width: 3.w,
-              ),
-              const Text(
-                "Search For momayaz",
-                style: TextStyle(
+        InkWell(
+           onTap: () {
+
+             push(context, SearchScreen());
+           },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13.sp),
+              border: Border.all(color: AppColors.offWhite),
+            ),
+            padding: EdgeInsets.all(18.sp),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.search,
                   color: AppColors.offWhite,
-                  fontWeight: FontWeight.bold,
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 3.w,
+                ),
+                const Text(
+                  "Search For momayaz",
+                  style: TextStyle(
+                    color: AppColors.offWhite,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
           ),
         )
       ],

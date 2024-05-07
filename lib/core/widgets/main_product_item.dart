@@ -78,10 +78,7 @@ class MainProductItem extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: () {
-                              //isFav = !isFav;
-                              addFav(catId: catId, id: productId);
-                            },
+                            onTap: onFavTap,
                             child: Icon(
                               isFav == false
                                   ? Icons.favorite_outline
