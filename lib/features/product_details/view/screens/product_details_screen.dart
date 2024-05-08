@@ -13,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  ProductDetailsScreen(
+  const ProductDetailsScreen(
       {super.key, required this.productId, required this.catId});
 
   final String productId;

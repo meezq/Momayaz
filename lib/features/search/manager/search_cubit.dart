@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'package:momayaz/core/models/product_model.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
 
@@ -18,13 +17,13 @@ class SearchCubit extends Cubit<SearchState> {
     emit(SearchLoading());
 
     firestore.collection("categories")
-        .doc("1").collection("1").where("name".toUpperCase() , isEqualTo: searchC.text.toString().toUpperCase())
+        .doc("1").collection("1").where("name" , isEqualTo: searchC.text.toUpperCase())
         .snapshots()
         .listen((value)  {
       safePrint("message");
       productModel.clear();
 
-      safePrint("========>"+value.docs.length.toString());
+      safePrint("========>${value.docs.length}");
       for (var document in value.docs) {
         safePrint("loop");
         final category = ProductModel.fromMap(document.id,document.data());

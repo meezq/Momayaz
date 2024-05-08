@@ -35,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
                       onFieldSubmitted: (value) {
                     safePrint(cubit.searchC.text);
-                        cubit.getProductsSearch(value: value);
+                        cubit.getProductsSearch(value: cubit.searchC.text);
                         setState(() {
 
                         });
@@ -57,7 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         itemCount: cubit.productModel.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Text(
-                            cubit.productModel[index].price, style: const TextStyle(
+                            cubit.productModel[index].vName, style: const TextStyle(
                               color: Colors.white
                           ),);
                         },

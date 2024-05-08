@@ -29,12 +29,11 @@ TextEditingController searchC = TextEditingController();
 
       for (var document in value.docs) {
         emit(CategoriesProductLoading());
-
         final category = ProductModel.fromMap(document.id,document.data());
         productModel.add(category);
         safePrint(productModel.length);
-        await likes(id: category.categoryId, productId: category.productId);
-        safePrint("likes====>${category.categoryId}==${category.productId} ==$isLiked");
+        await likes(id: category.categoryId, productId: category.productId,index: productModel.length-1);
+        safePrint("likes====>${category.categoryId}==${category.productId} ==${productModel[productModel.length-1].isLiked}");
         emit(CategoriesProductSuccess());
       }
     }).onError((error) {
@@ -110,6 +109,7 @@ TextEditingController searchC = TextEditingController();
         .doc(MyShared.getString(key: MySharedKeys.userid))
         .collection('fav')
         .doc(productId).delete().then((value) {
+          safePrint('removing');
       firestore.collection('categories').doc(catId).collection(catId).doc(productId).collection("likes")
           .doc(MyShared.getString(key: MySharedKeys.userid)).delete().then((value) {
         isLiked = false;
