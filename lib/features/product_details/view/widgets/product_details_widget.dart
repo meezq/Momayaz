@@ -90,7 +90,30 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
+        SizedBox(
+          height: 2.h,
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.symmetric(horizontal: 20.sp),
+          padding: EdgeInsets.symmetric(horizontal:20.0, vertical: 13.0),
+          decoration : BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(14)
+          ),
+          child: Center(
+            child: Text(
+              "BOOK NOW",
+                  style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight : FontWeight.bold
+              ),
+
+            ),
+          ),
+        ),
       ],
     );
   }

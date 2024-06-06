@@ -6,9 +6,15 @@ import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/features/register/view/screens/User_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ProfileHeader extends StatelessWidget {
+class ProfileHeader extends StatefulWidget {
   const ProfileHeader({super.key, required this.name});
   final String name;
+
+  @override
+  State<ProfileHeader> createState() => _ProfileHeaderState();
+}
+
+class _ProfileHeaderState extends State<ProfileHeader> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +25,7 @@ class ProfileHeader extends StatelessWidget {
             radius: 30,
             foregroundImage: NetworkImage(MyShared.getString(key: MySharedKeys.userImage)),
               child:Text(
-                    name.substring(0, 1).toUpperCase(),
+                    widget.name.substring(0, 1).toUpperCase(),
                     style: TextStyle(color: AppColors.offWhite, fontSize: 28.sp),
 
                   ),
@@ -43,7 +49,7 @@ class ProfileHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    name,
+                    widget.name,
                     style: TextStyle(
                         color: AppColors.offWhite,
                         fontSize: 20.sp,
@@ -53,11 +59,11 @@ class ProfileHeader extends StatelessWidget {
                     width: 1.w,
                   ),
                   MyShared.getBoolean(key: MySharedKeys.isVerified)
-                      ? Icon(
+                      ? const Icon(
                           Icons.verified_user_outlined,
                           color: AppColors.primary,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.error_outline,
                           color: AppColors.primary,
                         )

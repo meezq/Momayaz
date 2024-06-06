@@ -54,7 +54,7 @@ class _CarsScreenState extends State<CarsScreen> {
               ),
             ),
             title: Text(
-              "Cars",
+              "Car Models",
               style: TextStyle(
                 color: AppColors.offWhite,
                 fontSize: 18.sp,

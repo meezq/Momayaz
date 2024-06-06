@@ -12,7 +12,6 @@ class CategoriesScreen extends StatelessWidget {
 
   final String carCategoryId;
   final List cats;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +57,6 @@ class CategoriesScreen extends StatelessWidget {
                       id: cats[index].id,
                       category: cats[index].category,
                       carCatId: 'service',
-
                     ));
                   }
                   else{

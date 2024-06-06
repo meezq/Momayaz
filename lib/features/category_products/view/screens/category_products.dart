@@ -51,7 +51,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
                               color: AppColors.offWhite,
                             )),
                         Text(
-                          widget.category,
+                          widget.carCatId,
                           style: TextStyle(
                               color: AppColors.offWhite,
                               fontSize: 18.sp,

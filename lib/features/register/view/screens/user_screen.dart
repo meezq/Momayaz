@@ -42,7 +42,6 @@ class _UserScreenState extends State<UserScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final storage = FirebaseStorage.instance;
   String imageUrl = '';
-  bool loading = false;
 
   final cubit = RegisterCubit();
   final _formKey = GlobalKey<FormState>();
@@ -98,10 +97,6 @@ class _UserScreenState extends State<UserScreen> {
                             backgroundImage: NetworkImage(imageUrl),
                             ),
                             ),
-                          visibility(
-                              visible: loading,
-                              child: const CircularProgressIndicator(),
-                          )
                             ],
                           ),
                           const SizedBox(height: 15),
@@ -154,6 +149,7 @@ class _UserScreenState extends State<UserScreen> {
                               borderRadius: BorderRadius.circular(12.sp),
                               onPressed: () {
                                 saveUserData();
+                                pop(context);
                               },
                               label: "Update"),
                           SizedBox(
@@ -205,8 +201,9 @@ class _UserScreenState extends State<UserScreen> {
 
   @override
   void initState() {
-    super.initState();
     getUserData();
+    super.initState();
+
   }
 
   void updateUi(Map<String, dynamic> map) {
@@ -228,11 +225,15 @@ class _UserScreenState extends State<UserScreen> {
     final image = File(file!.path);
 
     uploadImage(image);
+    setState((){
+
+    }
+    );
   }
 
   void uploadImage(File image){
     setState(() {
-      loading = true;
+
     });
     final userId = auth.currentUser!.uid;
     storage.ref('profileImage/$userId').putFile(image)
@@ -243,7 +244,7 @@ class _UserScreenState extends State<UserScreen> {
   })
         .catchError((error){
       setState(() {
-        loading = false;
+
       });
           safePrint('uploadImage => $error');
     });
@@ -261,7 +262,7 @@ class _UserScreenState extends State<UserScreen> {
           safePrint(imageUrl);
           setState(() {
             this.imageUrl = imageUrl;
-            loading = false;
+
           });
 
          // saveImageUrl(imageUrl);
@@ -279,6 +280,6 @@ class _UserScreenState extends State<UserScreen> {
     safePrint('saveImageUrl => SUCCESS');
   }
 
-  visibility({required bool visible, required CircularProgressIndicator child}) {}
+
 
 }

@@ -304,27 +304,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         const Spacer(),
                         InkWell(
                           onTap: () {
-if(cubit.isLiked == true){
-  cubit.removeFav(catId: cubit.productModel.categoryId, productId: cubit.productModel.productId);
-  setState(() {
-
-
-  });
-}else{
-  cubit.addFav(
-      productId: cubit.productModel.productId,
-      catId: cubit.productModel.categoryId);
-  setState(() {
-
-  });
-}
+                            if (cubit.isLiked == true) {
+                              cubit.removeFav(
+                                  catId: cubit.productModel.categoryId,
+                                  productId: cubit.productModel.productId);
+                              setState(() {});
+                            } else {
+                              cubit.addFav(
+                                  productId: cubit.productModel.productId,
+                                  catId: cubit.productModel.categoryId);
+                              setState(() {});
+                            }
                           },
                           child: Icon(
                             cubit.isLiked == true
                                 ? Icons.favorite
-
-
-
                                 : Icons.favorite_outline,
                             color: AppColors.offWhite,
                           ),
@@ -332,9 +326,7 @@ if(cubit.isLiked == true){
                       ],
                     ),
                   ),
-
                 ],
-
               ),
             );
           }
