@@ -28,7 +28,8 @@ class SearchCubit extends Cubit<SearchState> {
       productModel.clear();
       safePrint("========>${value.docs.length}");
       for (var document in value.docs) {
-        if (document['title'].toString().toLowerCase().contains(searchC.text.toLowerCase())) {
+        if (document['title'].toString().toLowerCase().contains(searchC.text.toLowerCase()))
+        {
           safePrint("loop");
 
           final category = ProductModel.fromMap(document.id,document.data());

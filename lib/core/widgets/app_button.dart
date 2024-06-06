@@ -1,11 +1,10 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppButton extends StatelessWidget {
   AppButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.label,
     this.borderRadius,
@@ -13,7 +12,7 @@ class AppButton extends StatelessWidget {
     this.padding,
     this.textColor = Colors.white,
     this.bgColor,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
   final String label;
@@ -57,7 +56,7 @@ class AppButton extends StatelessWidget {
   }
 
   likeButton(
-      {required int Size,
+      {required int size,
       required Null Function(bool isliked) likedBuiler,
       required Icon Function(bool isLiked) likedBuilder}) {}
 }

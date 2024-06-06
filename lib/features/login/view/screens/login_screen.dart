@@ -124,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                             },
                             builder: (context, state) {
                               return cubit.state is LoginLoading
-                                  ? const CircularProgressIndicator(
+                                  ?  CircularProgressIndicator(
                                       color: AppColors.primary,
                                     )
                                   : AppButton(
@@ -166,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                                 onTap: () {
                                   push(context, RegisterScreen());
                                 },
-                                child: const Text(
+                                child:  Text(
                                   "Sign Up",
                                   style: TextStyle(
                                     color: AppColors.primary,

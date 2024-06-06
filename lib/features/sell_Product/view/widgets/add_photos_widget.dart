@@ -82,7 +82,7 @@ class _AddPhotosWidgetsState extends State<AddPhotosWidgets> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
+                         Icon(
                           Icons.camera_alt_outlined,
                           color: AppColors.primary,
                         ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color.fromARGB(255, 244, 11, 11);
-  static const Color second = Color(0xff000000);
+  static  Color primary = Color.fromARGB(255, 244, 11, 11);
+  static  Color second = Color(0xff000000);
 
   static const Color purple = Color(0xff361E4C);
-  static const Color text = Color(0xff8B8B8B);
+  static  Color text = Color(0xff8B8B8B);
   static const Color semiGrey = Color(0xffB8B6B6);
 
   static const Color offWhite = Color(0xffFBF9F9);

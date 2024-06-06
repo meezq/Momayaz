@@ -59,11 +59,11 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                     width: 1.w,
                   ),
                   MyShared.getBoolean(key: MySharedKeys.isVerified)
-                      ? const Icon(
+                      ?  Icon(
                           Icons.verified_user_outlined,
                           color: AppColors.primary,
                         )
-                      : const Icon(
+                      :  Icon(
                           Icons.error_outline,
                           color: AppColors.primary,
                         )

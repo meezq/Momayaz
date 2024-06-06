@@ -199,7 +199,7 @@ class RegisterScreen extends StatelessWidget {
                                   onTap: () {
                                     push(context, LoginScreen());
                                   },
-                                  child: const Text(
+                                  child:  Text(
                                     "Sign In",
                                     style: TextStyle(
                                       color: AppColors.primary,
