@@ -1,12 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
-class ProductDetailsWidget extends StatelessWidget {
+import 'package:momayaz/features/product_details/manager/product_details_cubit.dart';
+class ProductDetailsWidget extends StatefulWidget {
   const ProductDetailsWidget(
       {super.key, required this.type, required this.description});
 
   final String type, description;
+
+  @override
+  State<ProductDetailsWidget> createState() => _ProductDetailsWidgetState();
+}
+
+class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
+  final cubit = ProductDetailsCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +60,7 @@ class ProductDetailsWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        type,
+                        widget.type,
                         style: TextStyle(
                           color: AppColors.offWhite,
                           fontWeight: FontWeight.bold,
@@ -82,7 +90,7 @@ class ProductDetailsWidget extends StatelessWidget {
                 height: 2.h,
               ),
               Text(
-                description,
+                widget.description,
                 style: TextStyle(
                   color: AppColors.offWhite,
                   fontSize: 15.sp,
@@ -91,29 +99,7 @@ class ProductDetailsWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 2.h,
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 20.sp),
-          padding: EdgeInsets.symmetric(horizontal:20.0, vertical: 13.0),
-          decoration : BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(14)
-          ),
-          child: Center(
-            child: Text(
-              "BOOK NOW",
-                  style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  fontWeight : FontWeight.bold
-              ),
 
-            ),
-          ),
-        ),
       ],
     );
   }

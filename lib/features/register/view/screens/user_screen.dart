@@ -34,7 +34,6 @@ class _UserScreenState extends State<UserScreen> {
   final TextEditingController nameEditingController = TextEditingController();
 
   final TextEditingController emailEditingController = TextEditingController();
-
   final TextEditingController mobileEditingController = TextEditingController();
 
 
@@ -196,6 +195,7 @@ class _UserScreenState extends State<UserScreen> {
           key: MySharedKeys.username, value: nameEditingController.text);
       MyShared.putString(
           key: MySharedKeys.phone, value: mobileEditingController.text);
+    
     });
   }
 

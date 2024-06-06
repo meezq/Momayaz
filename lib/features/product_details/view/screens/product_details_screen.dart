@@ -54,33 +54,37 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 items: [
                   BottomNavigationBarItem(
                       label: '',
-                      icon: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10.sp),
-                        padding: EdgeInsets.all(15.sp),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[900],
-                            borderRadius: BorderRadius.circular(13.sp),
-                            border: Border.all(color: AppColors.primary)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.email_outlined,
-                              color: AppColors.primary,
-                            ),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            Text(
-                              "SMS",
-                              style: TextStyle(
-                                  color: AppColors.offWhite,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16.sp),
-                            )
-                          ],
+                      icon: InkWell(
+                        onTap:() =>cubit.addBooking(catId: widget.catId, productId: widget.productId),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10.sp),
+                          padding: EdgeInsets.all(15.sp),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[900],
+                              borderRadius: BorderRadius.circular(13.sp),
+                              border: Border.all(color: AppColors.primary)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.book,
+                                color: AppColors.primary,
+                              ),
+                              SizedBox(
+                                width: 2.w,
+                              ),
+                              Text(
+                                "Book",
+                                style: TextStyle(
+                                    color: AppColors.offWhite,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp),
+                              )
+                            ],
+                          ),
                         ),
                       )),
+
                   BottomNavigationBarItem(
                       label: '',
                       icon: InkWell(

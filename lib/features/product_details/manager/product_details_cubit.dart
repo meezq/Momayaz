@@ -1,3 +1,4 @@
+import 'package:momayaz/collections/manager/collection_copy_cubit.dart';
 import 'package:momayaz/core/models/product_model.dart';
 import 'package:momayaz/core/shared/my_shared.dart';
 import 'package:momayaz/core/shared/my_shared_keys.dart';
@@ -35,6 +36,47 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       emit(ProductDetailsFailure());
       safePrint("===============>$error");
     });
+  }
+  void addBooking({required String catId, required String productId,}) {
+    emit(UpdateLikeLoading());
+    firestore
+        .collection("categories")
+        .doc(catId)
+        .collection(catId)
+        .doc(productId)
+        .collection("bookings")
+        .doc(MyShared.getString(key: MySharedKeys.userid))
+        .set({
+      "booked_by": MyShared.getString(key: MySharedKeys.userid),
+      "booked_on": FieldValue.serverTimestamp(), // to record the time of the like
+    }).then((value) {
+      safePrint("added");
+      firestore
+          .collection("categories")
+          .doc(catId)
+          .collection(catId)
+          .doc(productId)
+          .get()
+          .then((value) {
+        firestore.collection("users").doc(MyShared.getString(key: MySharedKeys.userid)).collection("bookings").doc(productId).set({
+          "id": productId,
+          "category": catId,
+        }).then((value) {
+          firestore.collection("bookings").doc(productId).collection(userId).doc(userId).set({
+            "productId": productId,
+            "category": catId,
+            "booker_name":MyShared.getString(key: MySharedKeys.username),
+            "booker_phone":MyShared.getString(key: MySharedKeys.phone),
+            "booker_email":MyShared.getString(key: MySharedKeys.email),
+            "booked_on": FieldValue.serverTimestamp(),
+          });
+
+        });
+
+      });
+      emit(UpdateLikeSuccess());
+    });
+
   }
 
 
