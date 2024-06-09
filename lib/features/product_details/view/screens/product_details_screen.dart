@@ -2,6 +2,7 @@ import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
+import 'package:momayaz/core/widgets/congrats_screen.dart';
 import 'package:momayaz/features/chats/view/screens/chat_screen.dart';
 import 'package:momayaz/features/product_details/manager/product_details_cubit.dart';
 import 'package:momayaz/features/product_details/view/widgets/product_details_header.dart';
@@ -47,7 +48,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             );
           } else {
             return Scaffold(
-              bottomNavigationBar: BottomNavigationBar(
+              bottomNavigationBar: BlocConsumer<ProductDetailsCubit, ProductDetailsState>(
+  listener: (context, state) {
+    // TODO: implement listener
+    if (state is BookingSuccess) {
+      pushReplacement(
+        context,
+        const AppCongrats(
+          title: "Product Booked!,\n verify with the provider within 3 days.",
+          icon: "done.png",
+        ),
+      );
+    }
+  },
+  builder: (context, state) {
+    return BottomNavigationBar(
                 backgroundColor: Colors.grey[900],
                 showSelectedLabels: false,
                 showUnselectedLabels: false,
@@ -55,7 +70,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   BottomNavigationBarItem(
                       label: '',
                       icon: InkWell(
-                        onTap:() =>cubit.addBooking(catId: widget.catId, productId: widget.productId),
+                        onTap:() {cubit.addBooking(catId: widget.catId, productId: widget.productId);
+                          
+                          },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 10.sp),
                           padding: EdgeInsets.all(15.sp),
@@ -152,7 +169,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       )),
                 ],
-              ),
+              );
+  },
+),
               backgroundColor: Colors.grey[900],
               body: Stack(
                 children: [

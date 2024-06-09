@@ -52,7 +52,7 @@ class CategoriesScreen extends StatelessWidget {
                 return CategoriesItem(
                   icon: cats[index].image,
                   title: cats[index].category,
-                  onTap: () {if (index == 2||index ==3 ||index ==8){
+                  onTap: () {if (index == 2|| index == 3||index ==4 ||index ==5 ||index ==6 ||index ==7 ||index ==8 ||index ==9 ){
                     push(context,CategoryProducts(
                       id: cats[index].id,
                       category: cats[index].category,

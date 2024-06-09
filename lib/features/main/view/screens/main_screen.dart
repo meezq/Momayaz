@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
                     Visibility(
                       visible:
                           MyShared.getBoolean(key: MySharedKeys.isVerified) ==
-                              true,
+                              false,
                       child: Container(
                         color: AppColors.red,
                         padding: EdgeInsets.all(13.sp),

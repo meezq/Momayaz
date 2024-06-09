@@ -5,24 +5,23 @@ import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
 import 'package:momayaz/core/widgets/app_button.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
-import 'package:momayaz/features/my_ads/manager/my_ads_cubit.dart';
-import 'package:momayaz/features/bookings/view/bookings_screen.dart';
+import 'package:momayaz/features/bookings/manager/my_bookings_cubit.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class MyAdsScreen extends StatefulWidget {
-  const MyAdsScreen({super.key});
+class BookingScreen extends StatefulWidget {
+  const BookingScreen({super.key});
 
   @override
-  State<MyAdsScreen> createState() => _MyAdsScreenState();
+  State<BookingScreen> createState() => _BookingScreenState();
 }
 
-class _MyAdsScreenState extends State<MyAdsScreen> {
-  final cubit = MyAdsCubit();
+class _BookingScreenState extends State<BookingScreen> {
+  final cubit = MyBookingsCubit();
 
   @override
   void initState() {
     super.initState();
-    cubit.getAds();
+    cubit.getBookings();
   }
 
   @override
@@ -34,33 +33,21 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
         children: [
           Container(
             margin: EdgeInsets.all(13.sp),
-            child: Row(
-              children: [
-                Text(
-                  "My Ads",
-                  style: TextStyle(
-                      color: AppColors.offWhite,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                 const SizedBox(width: 150),
-                //  InkWell(
-                //
-                //   onTap: ()=>push(context, const BookingScreen()),
-                //   child: Text( "Bookings",
-                //     style: TextStyle(
-                //         color: AppColors.offWhite,
-                //         fontSize: 18.sp,
-                //         fontWeight: FontWeight.bold),),
-                // )
-              ],
+            child: Text(
+              "Booked Products",
+              style: TextStyle(
+                  color: AppColors.offWhite,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(
-            child: BlocBuilder<MyAdsCubit, MyAdsState>(
+            child: BlocBuilder<MyBookingsCubit, MyBookingsState>(
               builder: (context, state) {
                 return ListView.builder(
                   itemBuilder: (context, index) {
+
+safePrint('message');
                     return MainProductItem(
                       price: cubit.products[index].price,
                       title: cubit.products[index].title,
@@ -72,6 +59,8 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                       productId: cubit.products[index].productId,
                       catId: cubit.products[index].categoryId,
                     );
+
+
                   },
                   itemCount: cubit.products.length,
                 );

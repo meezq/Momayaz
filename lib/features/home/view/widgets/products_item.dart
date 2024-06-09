@@ -5,6 +5,7 @@ import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/widgets/app_image.dart';
 import 'package:momayaz/core/widgets/main_product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:momayaz/features/category_products/view/screens/category_products.dart';
 import 'package:momayaz/features/favourites/manager/add_favourite.dart';
 import 'package:momayaz/features/home/manager/home_cubit.dart';
 import 'package:momayaz/features/product_details/view/screens/product_details_screen.dart';
@@ -39,20 +40,21 @@ class _ProductsItemState extends State<ProductsItem> {
               ),
               const Spacer(),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  },
                 child: Text(
-                  "see all",
+                  "",
                   style: TextStyle(color: AppColors.offWhite, fontSize: 15.sp,),
                 ),
               ),
               SizedBox(
                 width: 1.w,
               ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors.offWhite,
-                size: 14.sp,
-              )
+              // Icon(
+              //   Icons.arrow_forward_ios_rounded,
+              //   color: AppColors.offWhite,
+              //   size: 14.sp,
+              // )
             ],
           ),
         ),
@@ -76,7 +78,7 @@ class _ProductsItemState extends State<ProductsItem> {
                       city: BlocProvider.of<HomeCubit>(context)
                           .sell[index]
                           .location,
-                      
+
                       image: BlocProvider.of<HomeCubit>(context)
                           .sell[index]
                           .images[0],

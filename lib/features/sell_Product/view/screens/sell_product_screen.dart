@@ -62,9 +62,15 @@ class SellProductScreen extends StatelessWidget {
                           icon: cubit.cats[index].image,
                           title: cubit.cats[index].category,
                           onTap: () {
-                            if (index == 3 ||
-                                index == 2||
-                                index== 8) {
+                            if (index == 2 ||
+                                index == 3 ||
+                                index == 4||
+                                index== 5||
+                                index == 6||
+                                index == 7||
+                                index== 8||
+                                index== 9
+                            ) {
                               push(
                                   context,
                                   SoldProductDetailsScreen(

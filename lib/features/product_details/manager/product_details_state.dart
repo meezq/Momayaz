@@ -16,4 +16,5 @@ class UpdateLikeLoading extends ProductDetailsState {}
 class UpdateLikeSuccess extends ProductDetailsState {}
 class AddLikeFailure extends ProductDetailsState {}
 
+class BookingSuccess extends ProductDetailsState {}
 

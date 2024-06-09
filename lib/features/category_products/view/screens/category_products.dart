@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CategoryProducts extends StatefulWidget {
-  CategoryProducts({super.key, required this.id, required this.category, required this.carCatId});
+  const CategoryProducts({super.key, required this.id, required this.category, required this.carCatId});
 
   final String id;
   final String category;

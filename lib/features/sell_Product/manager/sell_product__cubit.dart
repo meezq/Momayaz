@@ -86,7 +86,11 @@ class SellProductCubit extends Cubit<SellProductState> {
               .collection("ads")
               .doc(id)
               .set(sellBaseModel.toJson());
-        }).then((value) {
+        }).then((value) {FirebaseFirestore.instance
+            .collection('users')
+            .doc(MyShared.getString(key: MySharedKeys.userid))
+            .collection("ads")
+            .doc(id).update({"id": id});
           if (catId == "1") {
             sellVehicles(vehiclesModel: vehiclesModel, id: id);
 

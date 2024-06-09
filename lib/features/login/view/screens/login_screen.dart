@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:momayaz/core/styles/colors.dart';
 import 'package:momayaz/core/utils/navigators.dart';
 import 'package:momayaz/core/utils/safe_print.dart';
@@ -91,9 +92,15 @@ class LoginScreen extends StatelessWidget {
                             height: 2.h,
                           ),
                           InkWell(
-                            onTap: () {
-                              /// /// /// /// /// /// /// /// /// ///
-                            },
+                            onTap: () async {
+                              if (emailEditingController.text!.isEmpty){
+                                snackBar(context, 'Please enter your email', AppColors.red);}
+                              else{
+                              await FirebaseAuth.instance.sendPasswordResetEmail(email: emailEditingController.text);
+                              snackBar(context, 'Reset link has been sent to your email', AppColors.red);
+                              }
+
+                              },
                             child: Container(
                               alignment: AlignmentDirectional.centerEnd,
                               child: const Text(
@@ -132,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                                       padding: EdgeInsets.all(12.sp),
                                       bgColor: AppColors.primary,
                                       borderRadius:
-                                          BorderRadius.circular(12.sp),
+                                          BorderRadius.circular(13.sp),
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
                                           cubit.login(

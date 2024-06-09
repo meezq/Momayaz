@@ -159,7 +159,8 @@ class _SoldProductDetailsScreenState extends State<SoldProductDetailsScreen> {
                               ),
                               MyShared.getString(key: MySharedKeys.userImage),
                               widget.category.categoryId,
-                              currentDate.toString()),
+                              currentDate.toString()
+                          ),
                           propertyModel: PartModel(
                             context
                                 .read<SellProductCubit>()

@@ -68,12 +68,12 @@ class HomeCategoriesWidgets extends StatelessWidget {
             builder: (context, state) {
 
               return ListView.builder(
-                //padding: const EdgeInsets.fromLTRB(8, 2, 8, 2) ,
+                padding: const EdgeInsets.fromLTRB(8, 2, 8, 2) ,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                    if (index == 2||index ==3||index ==8){
+                    if (index == 2|| index == 3||index ==4 ||index ==5 ||index ==6 ||index ==7 ||index ==8 ||index ==9){
                       push(context,CategoryProducts(
                         id: cats[index].id,
                         category: cats[index].category,

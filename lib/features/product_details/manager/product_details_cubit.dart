@@ -62,6 +62,12 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
           "id": productId,
           "category": catId,
         }).then((value) {
+          firestore.collection("bookings").doc(productId).set({
+            "productId": productId,
+            "category": catId,
+            
+          }
+          ).then((value){
           firestore.collection("bookings").doc(productId).collection(userId).doc(userId).set({
             "productId": productId,
             "category": catId,
@@ -70,11 +76,11 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
             "booker_email":MyShared.getString(key: MySharedKeys.email),
             "booked_on": FieldValue.serverTimestamp(),
           });
-
+          });
         });
 
       });
-      emit(UpdateLikeSuccess());
+      emit(BookingSuccess());
     });
 
   }

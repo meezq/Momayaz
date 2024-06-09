@@ -112,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                                   }
                                   return null;
                                 },
-                                hint: "01008451421",
+                                hint: "0123456789",
                                 keyboardType: TextInputType.number,
                                 icon: Icons.phone_android_outlined,
                                 controller: mobileEditingController,
@@ -165,7 +165,7 @@ class RegisterScreen extends StatelessWidget {
                                 margin: const EdgeInsets.all(0),
                                 padding: EdgeInsets.all(12.sp),
                                 bgColor: AppColors.primary,
-                                borderRadius: BorderRadius.circular(12.sp),
+                                borderRadius: BorderRadius.circular(13.sp),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     cubit.register(
